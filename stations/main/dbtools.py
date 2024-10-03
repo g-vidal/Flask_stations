@@ -1,5 +1,5 @@
 import click
-from orientation.extensions import db
+from stations.extensions import db
 
 
 def init_dbsql():

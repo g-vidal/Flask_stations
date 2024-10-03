@@ -1,8 +1,8 @@
 from flask import render_template, session, request, flash
-from orientation.profile import bp
-from orientation.auth.routes import login_required
-from orientation.extensions import db
-from orientation.models.databases import User, Role, Data
+from stations.profile import bp
+from stations.auth.routes import login_required
+from stations.extensions import db
+from stations.models.databases import User, Role, Data
 @bp.route('/')
 def index():
 

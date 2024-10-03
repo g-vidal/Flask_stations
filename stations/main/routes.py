@@ -1,5 +1,5 @@
 from flask import render_template, session
-from orientation.main import bp
+from stations.main import bp
 import os
 from urllib.parse import urlparse
 

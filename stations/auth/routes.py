@@ -4,9 +4,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import exc
 import functools
 
-from orientation.auth import bp
-from orientation.models.databases import User, Role, Data
-from orientation.extensions import db
+from stations.auth import bp
+from stations.models.databases import User, Role, Data
+from stations.extensions import db
 
 # Standard login page
 @bp.route('/login', methods=('GET', 'POST'))

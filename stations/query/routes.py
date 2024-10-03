@@ -1,6 +1,6 @@
 from flask import render_template, request, flash, session, redirect, url_for
-from orientation.query import bp
-from orientation.auth.routes import login_required
+from stations.query import bp
+from stations.auth.routes import login_required
 
 import SPARQLWrapper
 from SPARQLWrapper import SPARQLWrapper, JSON

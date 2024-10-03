@@ -1,4 +1,4 @@
-from orientation.extensions import db
+from stations.extensions import db
 
 
 class User(db.Model):

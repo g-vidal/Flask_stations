@@ -8956,7 +8956,7 @@
 
     // Calculate the distance from the reference edge of the viewport to the text
     // position of the cue box. The reference edge will be resolved later when
-    // the box orientation styles are applied.
+    // the box stations styles are applied.
     var textPos = 0;
     switch (cue.positionAlign) {
       case "start":
@@ -8972,7 +8972,7 @@
         break;
     }
 
-    // Horizontal box orientation; textPos is the distance from the left edge of the
+    // Horizontal box stations; textPos is the distance from the left edge of the
     // area to the left edge of the box and cue.size is the distance extending to
     // the right from there.
     if (cue.vertical === "") {
@@ -8980,7 +8980,7 @@
         left: this.formatStyle(textPos, "%"),
         width: this.formatStyle(cue.size, "%")
       });
-      // Vertical box orientation; textPos is the distance from the top edge of the
+      // Vertical box stations; textPos is the distance from the top edge of the
       // area to the top edge of the box and cue.size is the height extending
       // downwards from there.
     } else {
@@ -12496,8 +12496,8 @@
         }
         player.on('fullscreenchange', updateDisplayHandler);
         player.on('playerresize', updateDisplayHandler);
-        const screenOrientation = window.screen.orientation || window;
-        const changeOrientationEvent = window.screen.orientation ? 'change' : 'orientationchange';
+        const screenOrientation = window.screen.stations || window;
+        const changeOrientationEvent = window.screen.stations ? 'change' : 'stationschange';
         screenOrientation.addEventListener(changeOrientationEvent, updateDisplayHandler);
         player.on('dispose', () => screenOrientation.removeEventListener(changeOrientationEvent, updateDisplayHandler));
         const tracks = this.options_.playerOptions.tracks || [];
@@ -16020,12 +16020,12 @@
      *         The element that was created.
      */
     createEl() {
-      let orientationClass = 'vjs-volume-horizontal';
+      let stationsClass = 'vjs-volume-horizontal';
       if (this.options_.vertical) {
-        orientationClass = 'vjs-volume-vertical';
+        stationsClass = 'vjs-volume-vertical';
       }
       return super.createEl('div', {
-        className: `vjs-volume-control vjs-control ${orientationClass}`
+        className: `vjs-volume-control vjs-control ${stationsClass}`
       });
     }
 
@@ -16349,12 +16349,12 @@
      *         The element that was created.
      */
     createEl() {
-      let orientationClass = 'vjs-volume-panel-horizontal';
+      let stationsClass = 'vjs-volume-panel-horizontal';
       if (!this.options_.inline) {
-        orientationClass = 'vjs-volume-panel-vertical';
+        stationsClass = 'vjs-volume-panel-vertical';
       }
       return super.createEl('div', {
-        className: `vjs-volume-panel vjs-control ${orientationClass}`
+        className: `vjs-volume-panel vjs-control ${stationsClass}`
       });
     }
 

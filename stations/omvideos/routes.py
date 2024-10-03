@@ -1,6 +1,6 @@
 from flask import render_template, session, request
-from orientation.auth.routes import login_required
-from orientation.omvideos import bp
+from stations.auth.routes import login_required
+from stations.omvideos import bp
 import os
 from urllib.parse import urlparse
 

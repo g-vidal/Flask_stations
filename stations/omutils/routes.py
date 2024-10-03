@@ -1,6 +1,6 @@
 from flask import render_template
-from orientation.omutils import bp
-from orientation.auth.routes import login_required
+from stations.omutils import bp
+from stations.auth.routes import login_required
 
 import SPARQLWrapper
 from SPARQLWrapper import SPARQLWrapper, JSON

@@ -10260,8 +10260,8 @@ class TextTrackDisplay extends Component$1 {
       }
       player.on('fullscreenchange', updateDisplayHandler);
       player.on('playerresize', updateDisplayHandler);
-      const screenOrientation = window$1.screen.orientation || window$1;
-      const changeOrientationEvent = window$1.screen.orientation ? 'change' : 'orientationchange';
+      const screenOrientation = window$1.screen.stations || window$1;
+      const changeOrientationEvent = window$1.screen.stations ? 'change' : 'stationschange';
       screenOrientation.addEventListener(changeOrientationEvent, updateDisplayHandler);
       player.on('dispose', () => screenOrientation.removeEventListener(changeOrientationEvent, updateDisplayHandler));
       const tracks = this.options_.playerOptions.tracks || [];
@@ -13784,12 +13784,12 @@ class VolumeControl extends Component$1 {
    *         The element that was created.
    */
   createEl() {
-    let orientationClass = 'vjs-volume-horizontal';
+    let stationsClass = 'vjs-volume-horizontal';
     if (this.options_.vertical) {
-      orientationClass = 'vjs-volume-vertical';
+      stationsClass = 'vjs-volume-vertical';
     }
     return super.createEl('div', {
-      className: `vjs-volume-control vjs-control ${orientationClass}`
+      className: `vjs-volume-control vjs-control ${stationsClass}`
     });
   }
 
@@ -14113,12 +14113,12 @@ class VolumePanel extends Component$1 {
    *         The element that was created.
    */
   createEl() {
-    let orientationClass = 'vjs-volume-panel-horizontal';
+    let stationsClass = 'vjs-volume-panel-horizontal';
     if (!this.options_.inline) {
-      orientationClass = 'vjs-volume-panel-vertical';
+      stationsClass = 'vjs-volume-panel-vertical';
     }
     return super.createEl('div', {
-      className: `vjs-volume-panel vjs-control ${orientationClass}`
+      className: `vjs-volume-panel vjs-control ${stationsClass}`
     });
   }
 

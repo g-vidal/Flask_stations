@@ -4,7 +4,7 @@ import click
 from rdflib.graph import ConjunctiveGraph, Graph
 from rdflib.plugins.stores.memory import Memory
 from rdflib.plugins.stores.sparqlstore import SPARQLStore
-from orientation.extensions import db, cache
+from stations.extensions import db, cache
 
 #def get_db():
 #	if 'db' not in g:
