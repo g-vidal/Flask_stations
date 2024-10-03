@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    {% block meta %}
+    {% endblock meta %}
+    <title>{% block title %}{% endblock %} - Demo préparation Parcoursup</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+   {% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+    {% endblock link %}
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/ENS_Tremplin-local.css') }}"/>
+    {% block javascript %}
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
+    {% endblock javascript%}
+    <style>
+        {% block style %}
+        {% endblock style %}
+    </style>
+</head>
+<body style="max-width: 1200px; margin: 0 auto;">
+<header>
+    <div class="px-4 py-2 my-0 bg-secondary text-center rounded">
+        <img class="img-fluid d-block mx-auto mb-4 mt-0"
+             src="{{ url_for('static', filename='images/bandeauLongRedMine.png') }}"
+             alt=" bandeau d'illustration du projet Tremplin des Sciences"/>
+        <h1 class="display-7 fw-bold text-body-emphasis ">Exploration du corpus de ressources de l'ONISEP : métiers,
+            formations, établissements</h1>
+    </div>
+</header>
+
+<nav id="workarea" class="navbar navbar-expand-lg bg-body-tertiary rounded my-1">
+    <div class="container-fluid">
+        <a class="navbar-brand"
+           href="{{ url_for('main.index') }}">ONISEP-mining</a>
+
+        <div class="collapse navbar-collapse"  id="navbar_gen">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if session['userpseudo'] %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">user :
+                        {{ session['userpseudo'] }}</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item"
+                               href="{{ url_for('auth.logout') }}">Déconnexion</a></li>
+                        <li><a class="dropdown-item"
+                               href="{{ url_for('profile.index') }}">Mon profil</a></li>
+                    </ul>
+                </li>
+                    {% block navconnect %}
+                    {% endblock %}
+                {% else %}
+                    {% block nav %}
+                    {% endblock %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="content bg-secondary p-4 rounded">
+    <header>
+        <h1>{% block header %}{% endblock %}</h1>
+    </header>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+</section>
+</body>

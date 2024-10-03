@@ -1,0 +1,84 @@
+{% extends '/explore/omvideos/index.html' %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/extension1.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/video-js.css')}}">
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/sidebars.js')}}"></script>
+<script src="{{ url_for('static', filename='js/jquery-3.7.0.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
+<script src="{{ url_for('static', filename='js/video.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/Youtube.min.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+Détails de la vidéo : {{title}}
+{% endblock %}
+
+{% block col2edit %}
+<div style="overflow-y:scroll; height:950px;">
+    {% for row in videodesc %}
+    {% set title = row.title['value'] %}
+    {% set idcollapse = "collapse" ~  "vid-" ~ loop.index|string %}
+    {% set linkcollapse = "#collapse" ~ "vid-" ~ loop.index|string %}
+    {% set thisvideo = row.vid['value'] %}
+
+    {% if videodesc|length > 1 %}
+    <p>Cliquez sur le titre pour afficher la vidéo.</p>
+    <a data-bs-toggle="collapse" href={{linkcollapse}} role="button">
+        <h4>Titre : {{ title }} </h4>
+    </a>
+    {% if creator is defined %}
+        <h5>Établissement : {{creator}}</h5>
+        {% else %}
+        <h5>Établissement : {{row.creator}}</h5>
+        {% endif %}
+    <div class="collapse" id={{idcollapse}}>
+        {% else %}
+        <h4>Titre : {{ title }}</h4>
+        {% endif%}
+
+
+        <video id="{{'video-' ~ loop.index|string}}" class="video-js" controls preload="none" width="512px"
+               height="288px"
+               data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{thisvideo}}" }] }'
+               style="position: relative;left: 50%;transform: translateX(-50%);">
+
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser
+                that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video>
+        <ul>
+            <li></li>
+            <li>Lien direct : <a href="{{row.vid['value'] }}" target="_blank">{{row.vid['value'] }}</a></li>
+        </ul>
+        <p>Langue :{{row.labell['value'] }}</p>
+        <p>Date : {{row.date['value'] }}, type : {{row.type['value']}}, durée : {{row.dur['value'] }}</p>
+        {% if creator is defined %}
+        <p>Établissement : {{creator}}</p>
+        {% else %}
+        <p>Établissement : {{row.creator}}</p>
+        {% endif %}
+        {% if row.subjs is defined %}
+        <p>Mots clé et sujets abordés : {{ row.subjs['value'] }}</p>
+        {% else %}
+        <p>Pas de mot clé ni sujet défini.</p>
+        {% endif %}
+        {% if row.desc['value']|length %}
+        <p>Description : {{row.desc['value'] | safe}}</p>
+        {% else %}
+        <p>Pas de description.</p>
+        {% endif %}
+        {% if videodesc|length > 1 %}
+    </div>
+    <hr/>
+    <br/>
+    {%endif%}
+    {% endfor %}
+</div>
+    <hr/>
+    <br/>
+{% endblock col2edit %}

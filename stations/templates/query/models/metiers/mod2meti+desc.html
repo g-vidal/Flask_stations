@@ -1,0 +1,39 @@
+{% extends 'query/models/base_mod2.html' %}
+
+{% block header %}
+<h2>Métiers correspondant aux centres d'intérêt choisis :</h2>
+<ul>
+	{% for row in listlabels %}
+	<li>{{ row.cilabel['value'] }}</li>
+	{% endfor %}
+</ul>
+{% endblock %}
+
+{% block menuTarget %}
+<main class="text-bg-primary d-flex flex-nowrap">
+			<div class="overflow-auto pt-4  mx-5" style="width: 890px">
+				<table class="table thead-light table-striped table-bordered ">
+					<tr>
+						<th>Nom du métier</th>
+						<th>Nb c. intérêt</th>
+						<th>Liste des centres d'intérêt</th>
+					</tr>
+					<tbody>
+					{% if selectjobs | length %}
+					{% for row in selectjobs %}
+					<tr>
+						<td><a href="{{ url_for('query.descmetimod', thisJob=row.Id['value'], thisJobName=row.Metier['value']) }}"
+						>{{ row.Metier['value'] }}</a></td>
+						<!--<td> {{row.Metier}}</td>-->
+						<td> {{ row.nbCinterets['value'] }}</td>
+						<td> {{ row.cinterets['value']}}</td>
+					</tr>
+					{% endfor %}
+					{% else %}
+					<p>Pas de métier trouvé pour ce centre d'intérêt.</p>
+					{% endif %}
+					</tbody>
+				</table>
+			</div>
+</main>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block header %}
+Mon profil utilisateur :
+{% endblock %}
+
+{% block content %}
+<h3>Partie fixe du profil</h3>
+<ul>
+    <li>Pseudo : {{ userdata[0] }}</li>
+    <li>Identifiant : {{ userdata[1] }}</li>
+    <li>Mail : {{ userdata[2] }}</li>
+    <li>Rôles : {{ userdata[3] }}</li>
+</ul>
+<h3>Partie modifiable duprofil -> <a href="/profile/modif">MODIFIER</a></h3>
+<h4>Point de départ des mesures de distances</h4>
+Les distances sont mesurées entre le point ci-dessous et le lieu des formations affichées. <strong>(Les valeurs de longitude et latitude peuvent être trouvées sur les sites cartographiques, par exemple <a href="https://www.openstreetmap.org" target="_blank">ici</a>)</strong>
+<table class="table" style="width: 400px;">
+    <thead><tr><td>Longitude</td><td>Latitude</td></tr></thead>
+    <tbody><tr><td>{{ userdata[4] }}</td><td>{{ userdata[5] }}</td></tr></tbody>
+</table>
+<h4>Mon projet de formation</h4>
+<p>{{ userdata[6] }}</p>
+<h4>Mon projet professionnel</h4>
+<p>{{ userdata[7] }}</p>
+<h4>Mes centres d'intérêt</h4>
+<p>{{ userdata[8] }}</p>
+<h4>Les compétences que je recherche</h4>
+<p>{{ userdata[9] }}</p>
+{% endblock content %}

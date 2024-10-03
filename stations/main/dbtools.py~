@@ -1,0 +1,124 @@
+
+import os
+import click
+from rdflib.graph import ConjunctiveGraph, Graph
+from rdflib.plugins.stores.memory import Memory
+from rdflib.plugins.stores.sparqlstore import SPARQLStore
+from orientation.extensions import db, cache
+
+#def get_db():
+#	if 'db' not in g:
+#		g.db = sqlite3.connect(
+#			current_app.config['DATABASE'],
+#			detect_types=sqlite3.PARSE_DECLTYPES
+#			)
+#		g.db.row_factory = sqlite3.Row
+#
+#	return g.db
+
+
+#def close_db(e=None):
+#	db = g.pop('db', None)
+#
+#	if db is not None:
+#		db.close()
+
+
+#def init_db():
+#	db = get_db()
+#@cache.cached(key_prefix='rdflibs')
+def init_dbrdf():
+
+	global metrdfdb
+	global forrdfdb
+	# allrdfdb = ConjunctiveGraph(store='Memory')
+	# cirdfdb = Graph(store='Memory', identifier="centerofinterest")
+	# prerdfdb = Graph(store='Memory', identifier="predicates")
+	metrdfdb = Graph(store='SPARQLStore', identifier="metiers")
+	metrdfdb.open("http://marjalahti.dsi-ext.ens-lyon.fr:3030/metiers")
+	forrdfdb = Graph(store='SPARQLStore', identifier="formations")
+	metrdfdb.open("http://marjalahti.dsi-ext.ens-lyon.fr:3030/formations")
+	#	strrdfdb = Graph(store='Memory', identifier="structures")
+
+
+##	print(metrdfdb)
+
+
+	# les graphes ci-dessous sont probablement inutiles à  vérifier
+	# mfordfdb = Graph(store=mystore, identifier="metforms")
+	# fosrdfdb = Graph(store=mystore, identifier="formstructs")
+
+	prepath = os.environ.get('RDFLIB_URI') + '/onisep-predicates.ttl'
+	cipath = os.environ.get('RDFLIB_URI') + '/ens-ci.ttl'
+	metpath = os.environ.get('RDFLIB_URI') + '/onisep-metiers.ttl'
+	forpath = os.environ.get('RDFLIB_URI') + '/onisep-formations.ttl'
+	strpath = os.environ.get('RDFLIB_URI') + '/onisep-structures.ttl'
+	
+#	with open(cipath) as f:
+#		read_data = f.read()
+#
+#	cirdfdb.parse(data=read_data, format="ttl")
+	
+	
+#	with open(prepath) as f:
+#		read_data = f.read()
+#
+#	prerdfdb.parse(data=read_data, format="ttl")
+#	metrdfdb.parse(data=read_data, format="ttl")
+#	forrdfdb.parse(data=read_data, format="ttl")
+	# strrdfdb.parse(data=read_data, format="ttl")
+	# mfordfdb.parse(data=read_data, format="ttl")
+	# fosrdfdb.parse(data=read_data, format="ttl")
+	
+#	with open(metpath) as f:
+#		read_data = f.read()
+#
+#	metrdfdb.parse(data=read_data, format="ttl")
+	
+#	with open(forpath) as f:
+#		read_data = f.read()
+#	forrdfdb.parse(data=read_data, format="ttl")
+	
+	# with open(strpath) as f:
+	#    read_data = f.read()
+	# strrdfdb.parse(data=read_data, format="ttl")
+	
+	# with open(metpath) as f:
+	#    read_data = f.read()
+	# mfordfdb.parse(data=read_data, format="ttl")
+	# with open(forpath) as f:
+	#    read_data = f.read()
+	# mfordfdb.parse(data=read_data, format="ttl")
+	
+	# with open(forpath) as f:
+	#    read_data = f.read()
+	# fosrdfdb.parse(data=read_data, format="ttl")
+	# with open(strpath) as f:
+	#    read_data = f.read()
+	# fosrdfdb.parse(data=read_data, format="ttl")
+#	cache.set("prerdfdb",prerdfdb)
+#	cache.set("metrdfdb",metrdfdb)
+#	cache.set("forrdfdb", forrdfdb)
+#	cache.set("strrdfdb", strrdfdb)
+#	predicates = cache.get("prerdfdb")
+#	metiers = cache.get("metrdfdb")
+#	formations = cache.get("forrdfdb")
+#	structures = cache.get("strrdfdb")
+
+#	return predicates, metiers, formations
+#	return metrdfdb
+
+def init_dbsql():
+	db.create_all()
+
+@click.command('init-dbsql')
+def init_dbsql_command():
+	"""Clear the existing data and create new tables."""
+	init_dbsql()
+	click.echo('Initialized the sqlalchemy database.')
+
+
+def construct_db(app):
+	
+	# app.teardown_appcontext(close_db)
+	app.cli.add_command(init_dbsql_command)

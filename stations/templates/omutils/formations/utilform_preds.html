@@ -1,0 +1,28 @@
+{% extends 'omutils/formations/utilform.html' %}
+
+{% block header %}
+Nom et niveau des {{countformspreds}} clefs utilisées pour les recherches sur les formation.
+{% endblock %}
+
+{% block shortDesc %}
+<main class="d-flex flex-nowrap m-4" style="overflow-y:scroll;">
+		<!--<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-primary table-wrapper" style="width: 800px;"> -->
+		<table class="table table-bordered table-hover;">
+			<thead>
+			<tr>
+				<th scope="col">Nom de la clef</th>
+				<th scope="col">Code de la clef</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for row in formspreds %}
+			<tr>
+				<td>{{ row.informationsDisponibles['value'] }}</td>
+				<td>{{ row.clefDeFiltrage['value'] }}</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</main>>
+{% endblock shortDesc %}

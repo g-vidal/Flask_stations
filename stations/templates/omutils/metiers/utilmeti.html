@@ -1,0 +1,77 @@
+{% extends 'query/models/base_mod.html' %}
+
+{% block link %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/tremplin.gif') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebars.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/extension1.css')}}">
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ url_for('static', filename='js/sidebars.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.7.0.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
+{% endblock %}
+
+{% block navconnect %}
+    <li><a class="nav-link" href="{{ url_for('explore.index') }}">Autre recherche</a></li>
+{% endblock %}
+{% block header %}
+<h1>{% block title %}Clefs d'exploration des données ONISEP sur les métiers {% endblock %}</h1>
+{% endblock %}
+
+
+{% block menuTarget %}
+<a href="{{ url_for('omutils.formutil') }}"
+   class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold mx-auto">Formations</span>
+</a>
+<a href="{{ url_for('omutils.etabutil') }}"
+   class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold mx-auto">Établissements</span>
+</a>
+<a href="{{ url_for('omutils.metiutil') }}"
+   class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold mx-auto">Métiers</span>
+</a>
+<ul>
+	<li>
+		<a href="{{ url_for('omutils.descmetiutil') }}"
+		   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Noms métiers et codes</a>
+	</li>
+    	<li>
+		<a href="{{ url_for('omutils.durmetiutil') }}"
+		   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Noms métiers niveau et salaire</a>
+	</li>
+	</li>
+    	<li>
+		<a href="{{ url_for('omutils.predmetiutil') }}"
+		   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Clefs de filtrage et codes</a>
+	</li>
+
+</ul>
+{% endblock menuTarget %}
+
+{% block modelContents %}
+<div id="loadlink" style="display:none;">
+    <table class="table">
+        <tr>
+            <td><img src="{{ url_for('static', filename='images/animatedBook.gif') }}"
+                             alt=""/></td>
+            <td>Traitement de votre demande... La durée de traitement est extrêmement variable d'une
+                        requête à l'autre, l'utilisation du filtrage d'unicité est particulièrement pénalisant.</tr>
+    </table>
+</div>
+
+<h2>Fonctions d'exploration des données sur les métiers :</h2>
+
+<p>La colonne de gauche propose la liste des objectifs de quelques requêtes d'exploration de la structure des
+    informations sur les métiers. Chaque lien est cliquable et exécute avec des paramètres automatiques le travail
+    proposé. Il est possible de passer de l'une à l'autre des explorations en cliquant sur  le nom du domaine exploré
+    (Métiers, Formations, Établissements).
+</p>
+{% block shortDesc %}
+{% endblock shortDesc %}
+{% endblock modelContents %}
+

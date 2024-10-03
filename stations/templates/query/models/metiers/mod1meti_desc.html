@@ -1,0 +1,24 @@
+{% extends 'query/models/metiers/mod1meti.html' %}
+
+{% block selectMet %}
+{% endblock %}
+
+{% block header %}
+Métiers du secteur : {{sect}}
+{% endblock %}
+
+{% block modelContents %}
+<div style="overflow-y:scroll;">
+	{% block shortDesc %}
+	{% for row in sectmetidesc %}
+	<a href="{{ url_for('query.descmetimod', thisJob=row.Id['value'], thisJobName=row.nomMetier['value']) }}"
+	   onclick="$('#loadlink').show();">{{row.nomMetier['value']}}</a>
+	<ul>
+		<li>Accroche : {{row.accroche['value'] | safe}}</li>
+		<li>Niveau d'accès : {{row.niveauAcces['value']}}</li>
+		<li>Description : {{row.shorterDesc['value'] | safe}}</li>
+	</ul>
+	{% endfor %}
+	{% endblock %}
+</div>
+{% endblock %}

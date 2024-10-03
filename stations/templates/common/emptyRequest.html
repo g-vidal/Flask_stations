@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block navconnect %}
+<li><a class="nav-link"
+       href="{{ url_for('explore.index') }}">Autre recherche</a></li>
+{% endblock %}
+
+{% block header %}Aucune information disponible !{% endblock %}
+{% block content %}
+    <h1 class="mt-5"></h1>
+    <p>Les informations qui ont été demandées ne sont pas disponibles dans la base de données ouverte fournie par
+        l'ONISEP. Veuillez consulter le site ONISEP au cas où l'information recherchée n'aie pas été exportée en
+        données ouvertes
+    </p>
+<p class="fst-italic">Si votre demande concerne les centres d'intérêt, l'ONISEP ne propose que 25 centres d'intérêt (dernier menu
+    déroulant de la page précédente), ce sont les seuls accessibles pour le moment. </p>
+{% endblock %}

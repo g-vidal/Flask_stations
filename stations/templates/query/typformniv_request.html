@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block navconnect %}
+<li><a class="nav-link"
+       href="{{ url_for('explore.index') }}">Autre recherche</a></li>
+{% endblock %}
+
+
+{% block content %}
+<main class="d-flex flex-nowrap">
+
+	<div class="b-example-divider b-example-vr"></div>
+	<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-primary" style="width: 180px;">
+		<a href="/explore/base_choice"
+		   class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+			<span class="fs-5 px-4 bg-secondary fw-semibold">Modèles</span>
+		</a>
+		<ul class="list-unstyled ps-0">
+			<li class="mb-1">
+				<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+						data-bs-toggle="collapse" data-bs-target="#src-collapse" aria-expanded="true">Source de données
+				</button>
+				<div class="collapse" id="src-collapse">
+					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+						<li>
+							<a href="#"
+							   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Métiers</a>
+						</li>
+						<li>
+							<a href="#"
+							   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Formations</a>
+						</li>
+						<li>
+							<a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Établissements</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="mb-1">
+				<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+						data-bs-toggle="collapse" data-bs-target="#ter-collapse" aria-expanded="true">Territoires
+				</button>
+				<div class="collapse" id="ter-collapse">
+					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+						<li>
+							<a href="#"
+							   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Ville</a>
+						</li>
+						<li>
+							<a href="#"
+							   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Département/M
+								étropole</a>
+						</li>
+						<li>
+							<a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Région</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="mb-1">
+				<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+						data-bs-toggle="collapse" data-bs-target="#var-collapse" aria-expanded="true">Variables
+				</button>
+				<div class="collapse" id="var-collapse">
+					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+						<li>
+							<a href="#"
+							   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Niveau</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+
+		</ul>
+	</div>
+	<div class="b-example-divider b-example-vr"></div>
+	<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-primary table-wrapper" style="width: 940px;">
+		<table class="table table-bordered table-hover">
+			<thead>
+			<tr>
+				<th scope="col">Nom de la formation</th>
+				<th scope="col">Niveau</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for row in tflist %}			<tr>
+				<td>{{ row.typeDeFormation['value'] }}</td>
+				<td>{{ row.educationalLevel['value'] }}</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</main>
+
+{% endblock %}

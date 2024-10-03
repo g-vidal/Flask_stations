@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block navconnect %}
+<li class="nav-item dropdown">
+	<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Recherche guidée</a>
+	<ul class="dropdown-menu">
+		<li><a class="dropdown-item" href="{{ url_for('query.metimod') ~ '#workarea' }}">Métiers</a></li>
+		<li><a class="dropdown-item" href="{{ url_for('query.metimod1') ~ '#workarea' }}">Secteurs d'activité</a></li>
+		<li><a class="dropdown-item" href="{{ url_for('query.metimod2') ~ '#workarea' }}">Centres d'intérêt</a></li>
+		<li><a class="dropdown-item" href="{{ url_for('query.formmod') ~ '#workarea' }}">Formations</a></li>
+<!--		<li><a class="dropdown-item" href="{{ url_for('query.etabmod') ~ '#workarea' }}">Établissements</a></li> -->
+	</ul>
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Recherche ouverte</a>
+    <ul class="dropdown-menu">
+		<li><a class="dropdown-item" href="{{ url_for('omvideos.explvideos') ~ '#workarea' }}">Vidéos</a></li>
+        <li><a class="dropdown-item" href="{{ url_for('explore.search_formindex') }}">Formations</a></li>
+    </ul>
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Utilitaires</a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{{ url_for('omutils.metiutil') ~ '#workarea' }}">Métiers</a></li>
+        <li><a class="dropdown-item" href="{{ url_for('omutils.formutil') ~ '#workarea' }}">Formations</a></li>
+        <!-- <li><a class="dropdown-item" href="{{ url_for('omutils.etabutil') ~ '#workarea' }}">Établissements</a></li> -->
+        <li><a class="dropdown-item" href="{{ url_for('explore.explore_ci')  ~ '#workarea'}}">Centres d'intérêt</a></li>
+		{% if session['role'] != 'user' %}
+		<li><a class="dropdown-item" href="{{ url_for('explore.contrib_ci') ~ '#workarea' }}">Modification C.I.{{session['role']}}</a></li>
+		{% endif %}
+   </ul>
+</li>
+{% endblock %}
+{% block header %}
+<h1>{% block title %}Sélection de la recherche{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<p>Sélectionner ici le type de recherche à effectuer à partir du menu ci-dessus</p>
+<p class="fst-italic">prévoir ici de lister les requêtes faites pendant la sesion (et éventuellement stocker les
+    résultats</p>
+{% endblock %}

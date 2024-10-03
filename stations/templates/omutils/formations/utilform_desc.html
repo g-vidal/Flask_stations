@@ -1,0 +1,28 @@
+{% extends 'omutils/formations/utilform.html' %}
+
+{% block header %}
+Nom et niveau des {{countforms}} types de formation.
+{% endblock %}
+
+{% block shortDesc %}
+<main class="d-flex flex-nowrap m-4" style="overflow-y:scroll;">
+		<!--<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-primary table-wrapper" style="width: 800px;"> -->
+		<table class="table table-bordered table-hover;">
+			<thead>
+			<tr>
+				<th scope="col">Type de la formation</th>
+				<th scope="col">Niveau atteint (nombre d'années d'étude)</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for row in formskeydur %}
+			<tr>
+				<td>{{ row.typeDeFormation['value'] }}</td>
+				<td>{{ row.educationalLevel['value'] }}</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</main>>
+{% endblock shortDesc %}

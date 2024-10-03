@@ -1,0 +1,212 @@
+{% extends 'base_trav.html' %}
+
+{% block link %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/tremplin.gif') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebars.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/extension1.css')}}">
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ url_for('static', filename='js/sidebars.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.7.0.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
+{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block navconnect %}
+    <li><a class="nav-link" href="{{ url_for('explore.index') }}">Autre recherche</a></li>
+{% endblock %}
+{% block header %}
+<h1>{% block title %}Clefs d'exploration des données ONISEP sur les établissements {% endblock %}</h1>
+{% endblock %}
+
+
+{% block menuTarget %}
+<a href="{{ url_for('omutils.metiutil') }}"
+   class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold mx-auto">Métiers</span>
+</a>
+<a href="{{ url_for('omutils.formutil') }}"
+   class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold mx-auto">Formations</span>
+</a>
+<a href="{{ url_for('omutils.etabutil') }}"
+   class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold mx-auto">Établissements</span>
+</a>
+<ul class="list-unstyled ps-0">
+	<li class="mb-1">
+		<a href="{{ url_for('omutils.metiutil') }}"
+		   class="link-body-emphasis d-inline-flex text-decoration-none rounded">En cours</a>
+	</li>
+</ul>
+{% endblock menuTarget %}
+
+
+{% block other %}
+<main class="d-flex flex-nowrap">
+    <div class="b-example-divider b-example-vr"></div>
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-primary" style="width: 180px;">
+        <a href="{{ url_for('omutils.metiutil') }}"
+           class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+            <span class="fs-5 px-4 bg-secondary fw-semibold">Métiers</span>
+        </a>
+        <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#src-collapse"
+                        aria-expanded="true">Propriétés
+                </button>
+                <div class="collapse"
+                     id="src-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li>
+                            <a href="#"
+                               class="link-body-emphasis d-inline-flex text-decoration-none rounded">Liste </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                               class="link-body-emphasis d-inline-flex text-decoration-none rounded">Formations</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                               class="link-body-emphasis d-inline-flex text-decoration-none rounded">Établissements</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#ter-collapse"
+                        aria-expanded="true">Territoires
+                </button>
+                <div class="collapse"
+                     id="ter-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li>
+                            <a href="#"
+                               class="link-body-emphasis d-inline-flex text-decoration-none rounded">Ville</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                               class="link-body-emphasis d-inline-flex text-decoration-none rounded">Département/M
+                                étropole</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                               class="link-body-emphasis d-inline-flex text-decoration-none rounded">Région</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#var-collapse"
+                        aria-expanded="true">Variables
+                </button>
+                <div class="collapse"
+                     id="var-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li>
+                            <a href="#"
+                               class="link-body-emphasis d-inline-flex text-decoration-none rounded">Niveau</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="b-example-divider b-example-vr"></div>
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-primary table-wrapper"
+         style="width: 940px;">
+        <h1>Liens directs :</h1>
+        <p>Tableau de correspondance entre <a href=" {{ url_for('query.auto_formutilrq') }} "
+                                              onclick="$('#loadlink').show();">nom et niveau des
+            formations.</a> Cette recherche filtre les noms des formation pour éliminer les doublons, cela prend du
+            temps...
+            soyez patients.
+        <div id="loadlink"
+             style="display:none;">
+            <table class="table">
+                <tr>
+                    <td><img src="{{ url_for('static', filename='images/animatedBook.gif') }}"
+                             alt=""/></td>
+                    <td>Traitement de votre demande... La durée de traitement est extrêmement variable d'une
+                        requête à l'autre, l'utilisation du filtrage d'unicité est particulièrement pénalisant.
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        </p>
+        <h1>Exemple de construction de recherche :</h1>
+        <main class="form-signin w-50 mx-auto mt-0 bg-body-tertiary">
+            <h2 class="h3 mb-3 fw-normal">Nom et niveau des formations</h2>
+            <p>Pour la première information entrez la valeur "typeDeFormation" et pour la seconde entrez
+                "educationalLevel". Les filtres utilisés dans l'exemple sont "schema:programType" pour le premier et
+                "schema:educationalLevel" pour le second (schema: représente l'espace de noms http://schema.org). Les
+                valeurs des filtres peuvent être réutilisées dans toutes les recherches.</p>
+            <form method="post">
+                <div class="form-floating">
+                    <input type="text"
+                           class="form-control"
+                           name="info1"
+                           id="info1"
+                           placeholder="typeDeFormation">
+                    <label for="info1"> Nom information 1</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text"
+                           class="form-control"
+                           name="filter1"
+                           id="filter1"
+                           placeholder="schema:programType">
+                    <label for="filter1"> Filtre 1</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text"
+                           class="form-control"
+                           name="info2"
+                           id="info2"
+                           placeholder="educationalLevel">
+                    <label for="info2">Nom information 2</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text"
+                           class="form-control"
+                           name="filter2"
+                           id="filter2"
+                           placeholder="schema:educationalLevel">
+                    <label for="filter2"> Filtre 2</label>
+                </div>
+                <button class="btn btn-primary w-100 py-2"
+                        type="submit"
+                        value="test"
+                        onclick="$('#loading').show();"
+                >Rechercher
+                </button>
+                <p class="mt-5 mb-3 text-body-secondary">&copy; 2023</p>
+            </form>
+            <div id="loading"
+                 style="display:none;">
+                <table class="table">
+                    <tr>
+                        <td><img src="{{ url_for('static', filename='images/animatedBook.gif') }}"
+                                 alt=""/></td>
+                        <td>Recherche en cours...</td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+    </div>
+</main>
+
+{% endblock %}

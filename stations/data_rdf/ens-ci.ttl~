@@ -1,0 +1,367 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix trmpfi:  <http://tremplin.ens-lyon.fr/rules/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dbp:     <https://dbpedia.org/ontology/> .
+
+trmpfi:gci01
+    a                  "group" ;
+    dcterms:identifier "g01" ;
+    rdfs:label         "Gouts scolaires" ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci02
+    a                  "group" ;
+    dcterms:identifier "g02" ;
+    rdfs:label         "Activités extra-scolaires" ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci03
+    a                  "group" ;
+    dcterms:identifier "g03" ;
+    rdfs:label         "lieu de travail souhaité" ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci04
+    a                  "group" ;
+    dcterms:identifier "g04" ;
+    rdfs:label         "Conditions de travail souhaitées" ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05
+    a                  "group" ;
+    dcterms:identifier "g05" ;
+    rdfs:label         "aptitudes" ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci06
+    a                  "group" ;
+    dcterms:identifier "g06" ;
+    rdfs:label         "Comportements" ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci01
+    a                  "ci" ;
+    dcterms:identifier "g01-ci01" ;
+    rdfs:label         "j'aime la géologie" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci02
+    a                  "ci" ;
+    dcterms:identifier "g01-ci02" ;
+    rdfs:label         "j'aime le biologie" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci03
+    a                  "ci" ;
+    dcterms:identifier "g01-ci03" ;
+    rdfs:label         "j'aime l'histoire" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci04
+    a                  "ci" ;
+    dcterms:identifier "g01-ci04" ;
+    rdfs:label         "j'aime la géographie" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci05
+    a                  "ci" ;
+    dcterms:identifier "g01-ci05" ;
+    rdfs:label         "j'aime la physique" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci06
+    a                  "ci" ;
+    dcterms:identifier "g01-ci06" ;
+    rdfs:label         "j'aime la chimie" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci07
+    a                  "ci" ;
+    dcterms:identifier "g01-ci07" ;
+    rdfs:label         "j'aime les mathématiques" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci08
+    a                  "ci" ;
+    dcterms:identifier "g01-ci08" ;
+    rdfs:label         "j'aime la littérature" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci09
+    a                  "ci" ;
+    dcterms:identifier "g01-ci09" ;
+    rdfs:label         "j'aime le français" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci10
+    a                  "ci" ;
+    dcterms:identifier "g01-ci10" ;
+    rdfs:label         "j'aime les langues" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci11
+    a                  "ci" ;
+    dcterms:identifier "g01-ci11" ;
+    rdfs:label         "j'aime l'économie" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci12
+    a                  "ci" ;
+    dcterms:identifier "g01-ci12" ;
+    rdfs:label         "j'aime la sociologie" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci13
+    a                  "ci" ;
+    dcterms:identifier "g01-ci13" ;
+    rdfs:label         "j'aime l'astronomie" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci01-ci14
+    a                  "ci" ;
+    dcterms:identifier "g01-ci14" ;
+    rdfs:label         "j'aime l'EPS et le sport" ;
+    dcterms:isPartOf   trmpfi:gci01 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci02-ci01
+    a                  "ci" ;
+    dcterms:identifier "g02-ci01" ;
+    rdfs:label         "j'aime faire du sport" ;
+    dcterms:isPartOf   trmpfi:gci02 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci02-ci02
+    a                  "ci" ;
+    dcterms:identifier "g02-ci02" ;
+    rdfs:label         "Le sport est ma passion" ;
+    dcterms:isPartOf   trmpfi:gci02 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci02-ci03
+    a                  "ci" ;
+    dcterms:identifier "g02-ci03" ;
+    rdfs:label         "j'aime les sensations fortes" ;
+    dcterms:isPartOf   trmpfi:gci02 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci02-ci04
+    a                  "ci" ;
+    dcterms:identifier "g02-ci04" ;
+    rdfs:label         "j'ai le goût du risque" ;
+    dcterms:isPartOf   trmpfi:gci02 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci02-ci05
+    a                  "ci" ;
+    dcterms:identifier "g02-ci05" ;
+    rdfs:label         "les activités extrêmes sont ma passion" ;
+    dcterms:isPartOf   trmpfi:gci02 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci02-ci06
+    a                  "ci" ;
+    dcterms:identifier "g02-ci06" ;
+    rdfs:label         "j'aime les activités nécessitant de la réflexion" ;
+    dcterms:isPartOf   trmpfi:gci02 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci02-ci07
+    a                  "ci" ;
+    dcterms:identifier "g02-ci07" ;
+    rdfs:label         "j'aime échanger sur les réseaux sociaux" ;
+    dcterms:isPartOf   trmpfi:gci02 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci02-ci08
+    a                  "ci" ;
+    dcterms:identifier "g02-ci08" ;
+    rdfs:label         "J'aime passer du temps sur des jeu vidéos" ;
+    dcterms:isPartOf   trmpfi:gci02 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci01
+    a                  "ci" ;
+    dcterms:identifier "g05-ci01" ;
+    rdfs:label         "je suis performant dans les activités manuelles qu'intellectuelles" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci02
+    a                  "ci" ;
+    dcterms:identifier "g05-ci02" ;
+    rdfs:label         "je suis performant dans les activités intellectuelles que manuelles" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci03
+    a                  "ci" ;
+    dcterms:identifier "g05-ci03" ;
+    rdfs:label         "Je sais manipuler les chiffres et les formules mathématiques" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci04
+    a                  "ci" ;
+    dcterms:identifier "g05-ci04" ;
+    rdfs:label         "Je sais gérer les relations humaines" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci05
+    a                  "ci" ;
+    dcterms:identifier "g05-ci05" ;
+    rdfs:label         "je suis performant avec des outils numériques" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci06
+    a                  "ci" ;
+    dcterms:identifier "g05-ci06" ;
+    rdfs:label         "je suis performant dans les jeux de stratégie" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci07
+    a                  "ci" ;
+    dcterms:identifier "g05-ci07" ;
+    rdfs:label         "je réussis à l'écrit en mathématiques" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci08
+    a                  "ci" ;
+    dcterms:identifier "g05-ci08" ;
+    rdfs:label         "j'ai validé le niveau B2 en Langue A anglais" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci09
+    a                  "ci" ;
+    dcterms:identifier "g05-ci09" ;
+    rdfs:label         "j'ai validé le niveau C2 en Langue A espagnol" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci10
+    a                  "ci" ;
+    dcterms:identifier "g05-ci10" ;
+    rdfs:label         "je réussi les TP en SVT" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci11
+    a                  "ci" ;
+    dcterms:identifier "g05-ci11" ;
+    rdfs:label         "je réussi les TP en Physique - Chimie" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci05-ci12
+    a                  "ci" ;
+    dcterms:identifier "g05-ci12" ;
+    rdfs:label         "j'ai validé le module 1 de l'atelier RGPD de la CNIL" ;
+    dcterms:isPartOf   trmpfi:gci05 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .
+
+trmpfi:gci06-ci01
+    a                  "ci" ;
+    dcterms:identifier "g06-ci01" ;
+    rdfs:label         "je suis un compétiteur" ;
+    dcterms:isPartOf   trmpfi:gci06 ;
+    dbp:status         "draft" ;
+    rdfs:comment       "" ;
+    dcterms:publisher  "ENS-Lyon" .

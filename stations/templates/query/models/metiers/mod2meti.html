@@ -1,0 +1,787 @@
+{% extends 'query/models/base_mod2.html' %}
+
+
+{% block menuTarget %}
+<main class="d-flex flex-nowrap" style="height: 600px;">
+	<div class="accordion pt-2 " id="jobProfile">
+		<form method="post">
+			<div class="container">
+				<div class="row">
+					<div class="col text-center my-5">
+						<button type="submit"
+								class="btn btn-primary" onclick="$('#loadlink').show();">Lancer la recherche de métiers
+							correspondant au profil ci-dessous</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item mx-5 mt-2">
+				<h3 class="accordion-header"
+					id="headScol">
+					<button class="accordion-button"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapseScol"
+							aria-expanded="false"
+							aria-controls="collapseScol">
+						Choix des centres d'intérêt scolaires
+					</button>
+				</h3>
+				<div id="collapseScol"
+					 class="accordion-collapse collapse"
+					 aria-labelledby="collapseScol">
+					<div class="accordion-body">
+
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci01-ci01"
+								   id="gci01-ci01">
+							<label class="form-check-label"
+								   for="gci01-ci01">
+								j'aime la géologie
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci01-ci02"
+								   id="gci01-ci02">
+							<label class="form-check-label"
+								   for="gci01-ci02">
+								j'aime la biologie
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci01-ci03"
+								   id="gci01-ci03">
+							<label class="form-check-label"
+								   for="gci01-ci03">
+								j'aime l'histoire
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci04">
+							<label class="form-check-label"
+								   for="gci01-ci04">
+								j'aime la géographie
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci05"
+							>
+							<label class="form-check-label"
+								   for="gci01-ci05">
+								j'aime la physique
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci06">
+							<label class="form-check-label"
+								   for="gci01-ci06">
+								j'aime la chimie
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci07">
+							<label class="form-check-label"
+								   for="gci01-ci07">
+								j'aime les mathématiques
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci08">
+							<label class="form-check-label"
+								   for="gci01-ci08">
+								j'aime la littérature
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci09">
+							<label class="form-check-label"
+								   for="gci01-ci09">
+								j'aime le français
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci10">
+							<label class="form-check-label"
+								   for="gci01-ci10">
+								j'aime les langues
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci11"
+							>
+							<label class="form-check-label"
+								   for="gci01-ci11">
+								j'aime l'économie
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci12">
+							<label class="form-check-label"
+								   for="gci01-ci12">
+								j'aime la sociologie
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci13"
+							>
+							<label class="form-check-label"
+								   for="gci01-ci13">
+								j'aime l'astronomie
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="gci01-ci14">
+							<label class="form-check-label"
+								   for="gci01-ci14">
+								j'aime le sport
+							</label>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item mx-5 my-4">
+				<h3 class="accordion-header"
+					id="headActiv">
+					<button class="accordion-button"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapseActiv"
+							aria-expanded="false"
+							aria-controls="collapseActiv">
+						Choix des activités extra-scolaires
+					</button>
+				</h3>
+				<div id="collapseActiv"
+					 class="accordion-collapse collapse"
+					 aria-labelledby="collapseActiv">
+					<div class="accordion-body">
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci02-ci01"
+								   id="gci02-ci01">
+							<label class="form-check-label"
+								   for="gci02-ci01">
+								j'aime faire du sport
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci02-ci02"
+								   id="gci02-ci02">
+							<label class="form-check-label"
+								   for="gci02-ci02">
+								Le sport est ma passion
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci02-ci03"
+								   id="gci02-ci03">
+							<label class="form-check-label"
+								   for="gci02-ci03">
+								j'aime les sensations fortes
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci02-ci04"
+								   id="gci02-ci04">
+							<label class="form-check-label"
+								   for="gci02-ci04">
+								j'ai le goût du risque
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci02-ci05"
+								   id="gci02-ci05">
+							<label class="form-check-label"
+								   for="gci02-ci05">
+								les activités extrêmes sont ma passion
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci02-ci06"
+								   id="gci02-ci06">
+							<label class="form-check-label"
+								   for="gci02-ci06">
+								j'aime les activités nécessitant de la réflexion
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci02-ci08"
+								   id="gci02-ci08">
+							<label class="form-check-label"
+								   for="gci02-ci08">
+								J'aime passer du temps sur des jeux vidéos
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci02-ci07"
+								   id="gci02-ci07">
+							<label class="form-check-label"
+								   for="gci02-ci07">
+								"j'aime échanger sur les réseaux sociaux
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item mx-5 my-4">
+				<h3 class="accordion-header"
+					id="headApti">
+					<button class="accordion-button"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapseApti"
+							aria-expanded="false"
+							aria-controls="collapseApti">
+						Choix des aptitudes
+					</button>
+				</h3>
+				<div id="collapseApti"
+					 class="accordion-collapse collapse"
+					 aria-labelledby="collapseApti">
+					<div class="accordion-body">
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci05-ci01"
+								   id="gci05-ci01">
+							<label class="form-check-label"
+								   for="gci05-ci01">
+								je suis performant dans les activités manuelles
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci05-ci02"
+								   id="gci05-ci02">
+							<label class="form-check-label"
+								   for="gci05-ci02">
+								je suis plus performant dans les activités intellectuelles que manuelles
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci05-ci03"
+								   id="gci05-ci03">
+							<label class="form-check-label"
+								   for="gci05-ci03">
+								Je sais manipuler les chiffres et les formules mathématiques"
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci05-ci04"
+								   id="gci05-ci04">
+							<label class="form-check-label"
+								   for="gci05-ci04">
+								Je sais gérer les relations humaines
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci05-ci05"
+								   id="gci05-ci05">
+							<label class="form-check-label"
+								   for="gci05-ci05">
+								je suis performant avec des outils numériques
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value="gci05-ci06"
+								   id="gci05-ci06">
+							<label class="form-check-label"
+								   for="gci05-ci06">
+								je suis performant dans les jeux de stratégie"
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item mx-5 my-4">
+				<h3 class="accordion-header"
+					id="headCondi">
+					<button class="accordion-button "
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapseCondi"
+							aria-expanded="false"
+							aria-controls="collapseCondi">
+						Choix des conditions de travail
+					</button>
+				</h3>
+				<div id="collapseCondi"
+					 class="accordion-collapse collapse"
+					 aria-labelledby="collapseCondi">
+					<div class="accordion-body">
+
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="conditions">
+							<label class="form-check-label"
+								   for="conditions">
+								Default checkbox 1
+							</label>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item mx-5 my-4">
+				<h3 class="accordion-header"
+					id="headLieu">
+					<button class="accordion-button"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapseLieu"
+							aria-expanded="false"
+							aria-controls="collapseLieu">
+						Choix du lieu de travail
+					</button>
+				</h3>
+				<div id="collapseLieu"
+					 class="accordion-collapse collapse"
+					 aria-labelledby="collapseLieu">
+					<div class="accordion-body">
+
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="aptitudes">
+							<label class="form-check-label"
+								   for="aptitudes">
+								Default checkbox 1
+							</label>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item mx-5 my-4">
+				<h3 class="accordion-header"
+					id="headComp">
+					<button class="accordion-button"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapseComp"
+							aria-expanded="false"
+							aria-controls="collapseComp">
+						Choix des comportements
+					</button>
+				</h3>
+				<div id="collapseComp"
+					 class="accordion-collapse collapse"
+					 aria-labelledby="collapseComp">
+					<div class="accordion-body">
+
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="new-c_int"
+								   value=""
+								   id="comportement">
+							<label class="form-check-label"
+								   for="comportement">
+								Default checkbox 1
+							</label>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item mx-5 my-4">
+				<h3 class="accordion-header"
+					id="headOnisep">
+					<button class="accordion-button"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapseOnisep"
+							aria-expanded="false"
+							aria-controls="collapseOnisep">
+						Choix centres d'intérêt ONISEP
+					</button>
+				</h3>
+				<div id="collapseOnisep"
+					 class="accordion-collapse collapse"
+					 aria-labelledby="collapseOnisep">
+					<div class="accordion-body">
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4827"
+								   id="T-IDEO2.4827">
+							<label class="form-check-label"
+								   for="T-IDEO2.4827">
+								le sport est ma passion
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4828"
+								   id="T-IDEO2.4828">
+							<label class="form-check-label"
+								   for="T-IDEO2.4828">
+								je veux m'occuper d'animaux
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4826"
+								   id="T-IDEO2.4826">
+							<label class="form-check-label"
+								   for="T-IDEO2.4826">
+								j'aime les sensations fortes
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4820"
+								   id="T-IDEO2.4820">
+							<label class="form-check-label"
+								   for="T-IDEO2.4820">
+								je veux être aux commandes
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4808"
+								   id="T-IDEO2.4808">
+							<label class="form-check-label"
+								   for="T-IDEO2.4808">
+								je veux faire respecter la loi
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4815"
+								   id="T-IDEO2.4815">
+							<label class="form-check-label"
+								   for="T-IDEO2.4815">
+								je veux m'occuper d'enfants
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4807"
+								   id="T-IDEO2.4807">
+							<label class="form-check-label"
+								   for="T-IDEO2.4807">
+								ma vocation est de soigner
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4805"
+								   id="T-IDEO2.4805">
+							<label class="form-check-label"
+								   for="T-IDEO2.4805">
+								je veux protéger la planète
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4824"
+								   id="T-IDEO2.4824">
+							<label class="form-check-label"
+								   for="T-IDEO2.4824">
+								j'aime la nature
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4819"
+								   id="T-IDEO2.4819">
+							<label class="form-check-label"
+								   for="T-IDEO2.4819">
+								enquêter, analyser l'information, je veux en faire mon travail
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4821"
+								   id="T-IDEO2.4821">
+							<label class="form-check-label"
+								   for="T-IDEO2.4821">
+								j'aimerais informer, communiquer
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4818"
+								   id="T-IDEO2.4818">
+							<label class="form-check-label"
+								   for="T-IDEO2.4818">
+								je suis fort en langues
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4816"
+								   id="T-IDEO2.4816">
+							<label class="form-check-label"
+								   for="T-IDEO2.4816">
+								j'aime jongler avec les chiffres
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4810"
+								   id="T-IDEO2.4810">
+							<label class="form-check-label"
+								   for="T-IDEO2.4810">
+								je rêve de travailler à l'étranger
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4811"
+								   id="T-IDEO2.4811">
+							<label class="form-check-label"
+								   for="T-IDEO2.4811">
+								j'ai la bosse du commerce
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4823"
+								   id="T-IDEO2.4823">
+							<label class="form-check-label"
+								   for="T-IDEO2.4823">
+								j'aimerais travailler dehors
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4813"
+								   id="T-IDEO2.4813">
+							<label class="form-check-label"
+								   for="T-IDEO2.4813">
+								j'aime faire des expériences
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4829"
+								   id="T-IDEO2.4829">
+							<label class="form-check-label"
+								   for="T-IDEO2.4829">
+								je rêve d'un métier artistique
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4806"
+								   id="T-IDEO2.4806">
+							<label class="form-check-label"
+								   for="T-IDEO2.4806">
+								je veux travailler de mes mains
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4822"
+								   id="T-IDEO2.4822">
+							<label class="form-check-label"
+								   for="T-IDEO2.4822">
+								réparer, bricoler, j'adore ça
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4812"
+								   id="T-IDEO2.4812">
+							<label class="form-check-label"
+								   for="T-IDEO2.4812">
+								je veux être utile aux autres
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4825"
+								   id="T-IDEO2.4825">
+							<label class="form-check-label"
+								   for="T-IDEO2.4825">
+								je suis branché high tech
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4809"
+								   id="T-IDEO2.4809">
+							<label class="form-check-label"
+								   for="T-IDEO2.4809">
+								j'aime bouger
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4814"
+								   id="T-IDEO2.4814">
+							<label class="form-check-label"
+								   for="T-IDEO2.4814">
+								j'aime organiser, gérer
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input"
+								   type="checkbox"
+								   name="c_int"
+								   value="T-IDEO2.4817"
+								   id="T-IDEO2.4817">
+							<label class="form-check-label"
+								   for="T-IDEO2.4817">
+								j'ai le sens du contact
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</main>
+{% endblock menuTarget %}

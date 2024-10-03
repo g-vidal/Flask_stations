@@ -1,0 +1,66 @@
+{% extends 'query/models/base_mod.html' %}
+
+{% block menuTarget %}
+<a href="{{ url_for('query.metimod') }}"
+   class="d-flex pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold mx-auto">Modèles</span>
+</a>
+<ul class="list-unstyled ps-0">
+	<li class="mb-1">
+		<a href="{{ url_for('query.metimod') }}"
+		   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Métiers</a>
+	</li>
+	<li>
+		<a href="{{ url_for('query.metimod1') }}"
+		   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Formations</a>
+	</li>
+<!--	<li>
+		<a href="#"
+		   class="link-body-emphasis d-inline-flex text-decoration-none rounded">Établissements</a>
+	</li> -->
+</ul>
+<a href="{{ url_for('query.metimod1') }}"
+   class="d-flex pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold mx-auto">Liste des secteurs</span>
+</a>
+<a href="{{ url_for('query.metimod') }}"
+   class="d-flex pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold mx-auto">Liste des métiers</span>
+</a>
+{% endblock menuTarget %}
+
+{% block selectTarget %}
+<form method="post">
+	<label>Filtrer les résultats avec : (une ou plusieurs lettres)</label>
+	<input class="form-control my-2" type="text" name="startjob" id="startjob"
+		   placeholder="filtre">
+	<button class="btn btn-primary w-100" type="submit" value="starttxt" onclick="$('#loadlink').show();">
+		Afficher
+	</button>
+</form>
+{% endblock selectTarget %}
+
+{% block listTarget %}
+<div style="overflow-y:scroll;">
+	<ul>
+		{% for row in joblist %}
+		<li><a href="{{ url_for('query.descmetimod', thisJob=row.Id['value'], thisJobName=row.nomMetier['value']) }}"
+			   onclick="$('#loadlink').show();" target="_blank">{{row.nomMetier['value']}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock listTarget %}
+
+{% block modelContents %}
+<h2>Recherche à partir de la liste des métiers :</h2>
+<h3>Première étape</h3>
+<p>La colonne de gauche permet d'afficher une liste de métiers issus de la base de données de l'ONISEP. En
+	cliquant sur "Afficher" la liste complète des métiers est affichée dans le volet de gauche. Cette liste
+	en contient 812, pour réduire la longueur de la liste il suffit de taper les première lettres du metier
+	connu (avec les accents), le dispositif fonctionne dès la première lettre.
+</p>
+<h3>Seconde étape</h3>
+<p>En cliquant sur l'un des métiers de la liste de la colonne de gauche on obtient la description détaillée du métier
+	qui s'affiche sur cette page dans la colonne de droite. Il est possible de rechercher la description d'un autre
+	des métiers de la liste sans avoir à recharger la liste.</p>
+{% endblock modelContents %}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+<div class="title">
+    {% block title %}
+    ONISEP-mining
+    {% endblock
+    %}
+</div>
+
+
+{% block nav %}
+<li><a class="nav-link"
+       href="{{ url_for('auth.register') }}">Inscription</a></li>
+<li><a class="nav-link"
+       href="{{ url_for('auth.login') }}">Connection</a></li>
+{% endblock nav %}
+
+{% block navconnect %}
+<li><a class="nav-link"
+       href="{{ url_for('explore.index') }}">Exploration</a></li>
+{% endblock navconnect %}
+
+{% block header %}
+Présentation du site
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h2>Fonctionnement de l'espace ONISEP-mining</h2>
+    <p>Cet espace permet d'interroger les ressources opendata mises à disposition par l'ONISEP sur le site
+        data.gouv. Pour l'utiliser il est nécessaire de s'authentifier, pour cela il faut être inscrit et validé pour
+        avoir les droits d'accès. La validation est effectué manuellement par mail pendant la phase de test qui est en cours.</p>
+    <p>Pour démarrer la recherche, une fois authentifié, cliquez soit sur "Exploration" soit sur l'un des menus
+        déroulants qui apparaitront dans le bandeau ci-dessus (sous le titre du site).
+    </p>
+    <h3>Trois modes d'accès aux données sont possibles</h3>
+    <ul>
+        <li>Recherche guidée à partir de modèles d'exploration préexistants</li>
+        <ul>
+            <li>Métiers</li>
+            <li>Secteurs d'activité</li>
+            <li>Centres d'intérêt</li>
+        </ul>
+        <li>Recherche directe sur les données
+            <ul>
+                <li>Formations</li>
+                <li>Vidéos</li>
+       </ul>
+        </li>
+        <li>Informations utiles sur les ressources
+            <ul>
+                <li>Métiers</li>
+                <li>Formations</li>
+                <li>Centres d'intérêt</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Règles d'accès</h3>
+    <p>Pour accéder à la ressource il est nécessaire de s'authentifier avec une adresse mail valide, le pseudo fourni
+        n'est utile que pour des fonctionnalités internes.</p>
+
+    <h2>Origine des données mises à disposition</h2>
+    <p> L'ensemble des données concernant les métiers, les formations et les établissements a été
+        fusionné sous la forme d'un système de données liées (LOD) en RDF et inséré dans une base de données locale. Le
+        site permet d'effectuer des requêtes via une interface simplifiée qui collecte les paramètres nécessaires
+        à la construction de requêtes en langage SPARQL. Les données sont compilées à partir du site ["opendata
+        de l'ONISEP"](http://opendata.onisep.fr) et contiennent les objets suivants
+        :
+    <ul>
+        <li>
+            <a href="http://opendata.onisep.fr/data/605340ddc19a9/2-ideo-actions-de-formation-initiale-univers-lycee.htm" target="_blank">formation
+                initiale lycée</a></li>
+        <li>
+            <a href="http://opendata.onisep.fr/data/605344579a7d7/2-ideo-actions-de-formation-initiale-univers-enseignement-superieur.htm" target="_blank">formation
+                initiale sup</a></li>
+        <li><a href="http://opendata.onisep.fr/data/5fa5816ac6a6e/2-ideo-structures-d-enseignement-secondaire.htm" target="_blank">structures
+            d'enseignement secondaire</a></li>
+        <li><a href="http://opendata.onisep.fr/data/5fa586da5c4b6/2-ideo-structures-d-enseignement-superieur.htm" target="_blank">structures
+            d'enseignement supérieur</a></li>
+        <li><a href="">fiches de formations</a></li>
+        <li><a href="http://opendata.onisep.fr/data/5fe07a9ecc960/2-ideo-fiches-formations.htm" target="_blank">fiches métier</a></li>
+
+    </ul>
+</div>
+
+{% endblock %}

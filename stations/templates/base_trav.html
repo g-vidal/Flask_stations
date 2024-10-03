@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block navconnect %}
+    <li><a class="nav-link" href="{{ url_for('explore.index') }}">Autre recherche</a></li>
+{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <tr>
+            <td><img src="{{ url_for('static', filename='images/travaux.gif') }}"
+                alt=""/></td>
+            <td>Cette rubrique est en cours de développement, elle sera mise en ligne dès que possible. Merci
+                de votre indulgence et patience.<br/>La page que vous avez demandée peut contenir des essais
+                en cours ou des scories d'essais précédents. Merci de ne pas en tenir compte.
+            </td>
+        </tr>
+    </table>
+{% endblock  content%}

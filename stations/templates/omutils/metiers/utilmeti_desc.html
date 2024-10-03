@@ -1,0 +1,29 @@
+{% extends 'omutils/metiers/utilmeti.html' %}
+
+{% block header %}
+Nom et code d'identification des {{countjobs}} métiers pour les recherches.
+{% endblock %}
+
+{% block shortDesc %}
+<main class="d-flex flex-nowrap m-4" style="overflow-y:scroll;">
+		<!--<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-primary table-wrapper" style="width: 800px;"> -->
+		<table class="table table-bordered table-hover;">
+			<thead>
+			<tr>
+				<th scope="col">Nom du métier</th>
+				<th scope="col">Code de recherche</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for row in jobskeycode %}
+			<tr>
+				<td>{{ row.metier['value'] }}</td>
+				<td><a href="{{ url_for('query.descmetimod', thisJob=row.Id['value'],
+						thisJobName=row.metier['value']) }}">{{ row.code['value'] }}</a></td>
+			</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</main>>
+{% endblock shortDesc %}

@@ -1,0 +1,187 @@
+{% extends 'explore/base_ci.html' %}
+{% block header %}
+<h1>{% block title %}Exploration des centres d'intérêt{% endblock %}</h1>
+{% endblock %}
+{% block col1_1list %}
+<form method="post">
+    <button class="btn btn-primary w-100 mt-1"
+            type="submit"
+            id="begin"
+            name="begin"
+            value="begin"
+            onclick="$('#loadlink').show();">Comence par :
+    </button>
+    <button class="btn btn-primary w-100 mt-1"
+            type="submit"
+            id="contain"
+            name="contain"
+            value="contain"
+            onclick="$('#loadlink').show();">Contient :
+    </button>
+    <div>
+        <input class="form-control mt-1 border-bottom"
+               type="text"
+               name="filter"
+               id="filter"
+               placeholder="Une ou plusieurs lettres">
+    </div>
+</form>
+{% endblock col1_1list %}
+
+{% block col1_2list %}
+<form method="post">
+    <button class="btn btn-secondary w-100 mb-4"
+            type="submit"
+            id="allci"
+            name="allci"
+            value="allci"
+            onclick="$('#loadlink').show();">Tous les C.I.
+    </button>
+</form>
+{% endblock col1_2list %}
+
+{% block col1_3list %}
+<form method="post">
+<button class="btn btn-secondary w-100 mt-1"
+        type="submit"
+        id="allgrp"
+        name="allgrp"
+        value="allgrp"
+        onclick="$('#loadlink').show();">Tous les groupes
+</button>
+</form>
+<div style="overflow-y:scroll;">
+    <ul>
+        <div class="modal-body">
+            {% for row in allgrplist %}
+            <li><a href="{{ url_for('explore.explore_ci', thisgrp=row.idgrp['value']) }}"
+			   onclick="$('#loadlink').show();">
+                {{row.group['value']}} -> <b>{{row.idgrp['value']}}</b></a></li>
+            {% endfor %}
+        </div>
+    </ul>
+</div>
+{% endblock col1_3list %}
+
+{% block col2edit %}
+<span class="mx-auto fs-5 px-4 my-2 bg-secondary fw-semibold">Détails d'un centre d'intérêt</span>
+<div style="overflow-y:scroll;">
+    <h4>Pour Afficher des centres d'intérêt :</h4>
+    <p>Utiliser les boutons pour filtrer les recherches</p>
+    <h4>Pour Afficher le détail d'un centre d'intérêt :</h4>
+    <p>Cliquer sur le centre d'intérêt depuis la liste dans la colonne de droite.</p>
+    <h4>Pour Afficher la liste des centres d'intérêt d'un groupe :</h4>
+    <p>Cliquer sur le groupe, la liste des C.I. est affichée dans la colonne de droite.</p>
+</div>
+    {% for row in proplist %}
+    <div>
+        Libellé du centre d'intérêt :
+        <input class="form-control my-2"
+               type="text"
+               name="label"
+               id="ci_label"
+               value="{{row.ci['value']}}">
+
+    </div>
+    <div>
+        Identifiant unique (non modifiable) :
+        <input class="form-control my-2"
+               type="text"
+               name="identifiant"
+               id="ci_identifiant"
+               value={{row.id['value']}}
+               readonly>
+    </div>
+    <div>
+        Groupe de centres d'intérêt (non modifiable) :
+        <input class="form-control my-2"
+               type="text"
+               name="group"
+               id="ci_group"
+               value={{row.grp['value']}}
+               readonly>
+    </div>
+    <div>
+        État d'avancement (brouillon=draft ou validé=valid) :
+        <input class="form-control my-2"
+               type="text"
+               name="status"
+               id="ci_status"
+               value={{row.status['value']}}
+               readonly>
+    </div>
+    <div>
+        Entité rédactrice du C.I. :
+        <input class="form-control my-2"
+               type="text"
+               name="publisher"
+               id="cipublisher"
+               value={{row.pub['value']}}>
+    </div>
+    <div>
+        Liste des métiers concernés par ce C.I (format: MET.####, MET###.../...) :
+        <input class="form-control my-2"
+               type="text"
+               name="relatedjobs"
+               id="ci_relatedjobs"
+               {% if row.jobs | length %}
+               value={{row.jobs['value']}}
+               {% endif %}>
+    </div>
+    <div>
+        Commentaires, opportunité, suggestions, justifications ... :
+        <input class="form-control my-2"
+               type="text"
+               name="comment"
+               id="ci_comment"
+               {% if row.comment | length %}
+               value={{row.comment['value']}}
+               {% endif %}>
+    </div>
+    {% endfor%}
+{% endblock col2edit %}
+
+{% block col3list %}
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-primary table-wrapper"
+     style="width: 280px;">
+        <span class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+            <span class="mx-auto fs-5 px-4 bg-secondary fw-semibold">Listes de C.I.</span>
+        </span>
+
+    <div style="overflow-y:scroll;">
+        <ul>
+            <div class="modal-body ">
+                {% for row in allcilist %}
+                <li><a href="{{ url_for('explore.explore_ci', thisci=row.id['value']) }}"
+                       onclick="$('#loadlink').show();">{{row.ci['value']}}</a></li>
+                {% endfor %}
+            </div>
+        </ul>
+    </div>
+    <div style="overflow-y:scroll;">
+        <ul>
+            <div class="modal-body">
+                {% for row in searchlist %}
+                <li><a href="{{ url_for('explore.explore_ci', thisci=row.id['value']) }}">
+                    {{row.ci['value']}}</a>
+                </li>
+                {% endfor %}
+            </div>
+        </ul>
+    </div>
+    <div style="overflow-y:scroll;">
+        <ul>
+            <div class="modal-body">
+                {% for row in grplist %}
+                <li><a href="{{ url_for('explore.explore_ci', thisci=row.id['value']) }}">
+                    {{row.ci['value']}}</a>
+                </li>
+                {% endfor %}
+            </div>
+        </ul>
+    </div>
+
+</div>
+
+<div class="b-example-divider b-example-vr"></div>
+{% endblock col3list %}

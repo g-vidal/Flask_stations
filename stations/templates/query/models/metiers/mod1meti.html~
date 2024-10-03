@@ -1,0 +1,46 @@
+{% extends 'query/models/base_mod.html' %}
+
+{% block header %}
+<h1>{% block title %}Recherche à partir d'un modèle{% endblock %}</h1>
+{% endblock %}
+
+{% block menuTarget %}
+<a href="/query/modmeti"
+   class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold">Liste des métiers</span>
+</a>
+<a href="/query/mod1meti"
+   class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+	<span class="fs-5 px-4 bg-secondary fw-semibold">Liste des secteurs</span>
+</a>
+{% endblock menuTarget %}
+{% block selectTarget %}
+<form method="post">
+	<div>
+		<input class="form-control my-2" type="text" name="startsect" id="startsect"
+			   placeholder="clic-->tous / lettre(s)">
+	</div>
+	<button class="btn btn-primary w-100" type="submit" value="starttxt" onclick="$('#loadlink').show();">Lister
+	</button>
+</form>
+{% endblock selectTarget %}
+{% block listTarget %}
+<div style="overflow-y:scroll;">
+	<ul>
+		{% for row in sectlist %}
+		<li>
+			<a href="{{ url_for('query.descmetimod1', thisSect=row.secteur['value'], thisSectId=row.sectid['value']) }}"
+			   onclick="$('#loadlink').show();">{{row.secteur['value']}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock listTarget %}
+{% block modelContents %}
+<h1>Recherche à partir d'un secteur d'activités:</h1>
+<p> Cette pege permet d'accéder à la liste des métiers par secteur d'activités. La colonne de gauche fournit la liste
+	de tous les secteurs d'activité proposés en cliquant sur "lister" il y en a 43. Pour réduire cette il suffit de
+	taper la première lettre (en majuscule) ou le début du nom pour limiter le nombre de secteurs affichés.</p>
+<p>En cliquant sur le nom du secteur on obtient la liste des étiers correspondant à ce secteur d'activités classés
+	par niveau d'accès post-bac croissant. Attention s'il existe un accès possible sans le bac il est placé en fin de
+	liste.</p>
+{% endblock modelContents %}

@@ -1,0 +1,122 @@
+{% extends 'explore/base_choice.html' %}
+
+{% block header %}
+Je cherche une formation répondant aux critères suivants :
+{% endblock %}
+
+{% block content %}
+
+<form method="post">
+
+    <h3 class="mt-4">Niveau</h3>
+    <label for="choose-level"> Quel est le niveau d'études visé :</label>
+    <select class="form-select mx-5 my-4" style="width: 300px;" aria-label="Select niveau" name="niveau"
+            id="choose-level">
+        <option selected>-- Choisir dans cette liste --</option>
+        {% for row in formsdurlist %}
+        <option value="{{ row.educationalLevel['value'] }}">{{ row.educationalLevel['value'] }}</option>
+        {% endfor %}
+    </select>
+
+    <h3 class="mt-4">Établissement public ou privé</h3>
+    <div class="accordion pt-2 " id="jobProfile">
+        <div class="accordion-item mx-5 my-4" style="width: 300px;">
+            <h3 class="accordion-header" id="status">
+                <button class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseStatus"
+                        aria-expanded="false"
+                        aria-controls="collapseStatus">
+                    Quel est le statut d'établissement visé :
+                </button>
+            </h3>
+            <div id="collapseStatus"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="collapseStatus">
+                <div class="accordion-body">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               name="status"
+                               value="public"
+                               id="public">
+                        <label class="form-check-label"
+                               for="public">
+                            Établissement public
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               name="status"
+                               value="privectrt"
+                               id="privectrt">
+                        <label class="form-check-label"
+                               for="privectrt">
+                            Établissement privé sous contrat
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               name="status"
+                               value="privenoctrt"
+                               id="privenoctrt">
+                        <label class="form-check-label"
+                               for="privenoctrt">
+                            Établissement privé non contractualisé
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="mt-4">Secteur d'activités</h3>
+    <label for="choose-sector"> Quel est le secteur d'activité exploré :</label>
+    <select class="form-select mx-5 my-4" style="width: 300px;" aria-label="Select example" name="secteur"
+            id="choose-sector">
+        <option selected>-- Choisir dans cette liste --</option>
+        {% for row in sectlist %}
+        <option value="{{ loop.index0 }}">{{ row.secteur['value'] }}</option>
+        {% endfor %}
+    </select>
+
+
+    <div class="my-3">
+        <h3>Secteur Géographique</h3>
+        <p>Choisir un seul de ces deux paramètres :</p>
+        <button type="button" class="button mx-5" data-bs-toggle="collapse" data-target="#toggleContainer"
+                href="#departements" role="button"><h4>Département</h4></button>
+        <button type="button" class="button" data-bs-toggle="collapse" data-target="#toggleContainer" href="#distances"
+                role="button"><h4>Distance</h4></button>
+    </div>
+    <div class="collapse" id="departements">
+        <h4 class="mt-4">Département</h4>
+        <label for="choose-sector"> Quel est le département où est cherchée la formation :</label>
+        <select class="form-select" style="width: 250px;" aria-label="Select example" name="departement"
+                id="choose-dep">
+            <option selected>-- Choisir dans cette liste --</option>
+            {% for row in deptlist %}
+            <option value="{{ loop.index0 }}">{{ row.dept['value'] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+
+    <div class="collapse" id="distances">
+        <h4 class="mt-4">Distance</h4>
+        <label for="distance">Distance maximale en km entre le lieu d'enseignement recherché et le lieu choisi comme
+            base
+            dans le profil:</label><br/>
+        <input type="number" id="distance" name="distance"><br/>
+    </div>
+    <br/>
+    <button class="btn btn-primary w-50 py-2 mx-auto"
+            type="submit"
+            value="Modify">Valider leschoix effectués
+    </button>
+</form>
+
+{% endblock content %}

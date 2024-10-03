@@ -1,0 +1,45 @@
+{% extends 'explore/base_choice.html' %}
+
+{% block style %}
+{% endblock style %}
+
+{% block title %}
+Recherche
+{% endblock %}
+{% block header %}
+<h1>Présentation des recherches possibles</h1>
+{% endblock %}
+
+{% block nav %}
+<li> <a class="nav-link" href="{{ url_for('auth.register') }}">Inscription</a></li>
+<li> <a class="nav-link" href="{{ url_for('auth.index') }}">Connection</a></li>
+{% endblock %}
+
+
+
+{% block content %}
+<h2>Avertissement !</h2>
+<p>Il est nécessaire d'être authentifié pour accéder aux moteurs de recherche proposés et faire apparaître ci-dessus
+	le lien vers les moteurs de recherche... Une fois connecté les trois menus déroulants permettent de choisir le
+	type de recherche qui sera mis en oeuvre.</p>
+<p><strong>LES REQUÊTES SONT RÉALISÉES DANS LE CADRE D'UN DÉMONSTRATEUR ET NE REPRÉSENTENT QU'UNE PETITE PARTIE  DES POSSIBILITÉS DE LA MÉTHODE UTILISÉE. IL EST POSSIBLE D'AJOUTER DES REQUÊTES POUR SATISFAIRE DES CONTRAINTES PARTICULIÈRES(contacter l'auteur).</strong></p>
+<h2>Approches possibles pour la recherche</h2>
+<p>Les ressources proposées forment un univers complexe de données liées entre elles, il est nécessaire pour chaque usager de mettre en
+	place une stratégie de recherche pour trouver l'information valide et pertinente que l'on souhaite obtenir. Pour
+	trouver une information il faut fournir au moteur de recherches des paramètres dont le nombre
+	est variable via l'un des trois modes d'accès proposés (bandeau de commande ci-dessus). La pertinence du résultat dépend  de la qualité du heu de paramètres fourni, un nombre trop important de contraintes fournira des réponses rapides mais pourrait éliminer des ressources potentiellement intéressantes; un nombre trop faible de contraintes ou une contrainte trop lâche prendront du temps et fourniront un nombre inutilisable de réponses.
+<ul>
+	<li>Le mode <strong>"Recherche guidée"</strong> utilise des modèles de requête directement exécutables dont la validité a été éprouvée et pour lesquels un nombre limité de paramètres peuvent être modifiés via une interface interactive. Il est recommandé de commencer par cette interface avant de mettre en œuvre des recherches ouverte.
+	</li>
+	<li>Le mode <strong>"Recherche ouverte"</strong> est plus ouvert, il permet d'utiliser librement les paramètres des ressources "metiers", "formations" via une interface d'entrée ou des menus déroulants reprenant chacun un paramètre.
+
+		Cette fonctionnalité est plus complexe à utiliser. Plus la demande est compliquée et s'adresse à une masse de données à trier en sortie, importante plus le temps de recherche s'allonge, il est donc recommandé de structurer sa recherche afin de réduire la taille de la sortie pour chacune des requêtes. Il peut aussi être compliqué pour un usager non averti de choisir de façon optimale les paramètres qui seront soumis au moteur pour faciliter le choix des paramètres, les utilitaires permetent d'avoir un aperçu du jeu de données (cf. plus loin).
+	</li>
+	<li>Le mode <strong>"Utilitaires"</strong> permet d'explorer la description des ressources en listant les
+		informations disponibles pour chaque domaine de recherches. Cette rubrique peut être utile pour prendre connaissance de corpus de données traitées ou trouver des paramètres précis pour filtrer les recherches libres. C'est aussi un moyen pour déterminer quels sont les paramètres les plus pertinents pour la recherche libre que l'on veut faire. Quelques domaines issus de demandes d'usagers sont préformatés et proposés à titre indicatif
+	</li>
+</ul>
+<h2>Quelques précisions sur les usages</h2>
+<p>La contribution aux usages mis en place est ouverte.</p>
+{% endblock %}
+

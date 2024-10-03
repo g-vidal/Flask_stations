@@ -1,0 +1,93 @@
+{% extends 'query/models/base_mod2.html' %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/sidebars.js')}}"></script>
+<script src="{{ url_for('static', filename='js/jquery-3.7.0.min.js')}}"></script>
+
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+Description de la formation : {{formname}}<br/>
+Durée des études : {{duration}}<br/>
+Niveau de sortie : {{ educlevel }}
+{% endblock %}
+
+{% block content %}
+    {% block shortDesc %}
+        {% for row in formdesc %}
+            {% set region = row.region['value'] %}
+            {% set idcollapse = collapse ~ region %}
+            {% set linkcollapse = '#' ~ collapse ~ region %}
+            {% if loop.index0 > 0 and loop.previtem.region['value'] != region %}
+                {% set link = 1 %}
+            {%endif%}
+
+<div class="d-flex flex-column flex-shrink-0 text-bg-primary table-wrapper"
+     style="width: 1100px; height:auto;">
+    {% if loop.index0 == 0 or link == 1 %}
+    <a class="my-1" data-bs-toggle="collapse" href={{linkcollapse}} role="button"><h4>{{region}}</h4></a>
+    {% endif%}
+   <div class="collapse" id={{idcollapse}}>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Type d'information</th>
+                <th scope="col">Valeur</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Ville où est localisée la formation</td>
+                <td>{{row.ville['value']}}</td>
+            </tr>
+            <tr>
+                <td>Distance au lieu enregistré dans mon profil</td>
+                <td>{{row.dist['value']}} km</td>
+            </tr>
+            <tr>
+                <td>Nom de l'établissement</td>
+                <td>{{row.etablissement['value']}}</td>
+            </tr>
+            <tr>
+                <td>Statut de l'établissement (privé, public, ...)</td>
+                <td>{{row.statut['value']}}</td>
+            </tr>
+            <tr>
+                <td>Modalités de scolarité</td>
+                <td>{{row.scolmod['value']}}</td>
+            </tr>
+            {% if row.cout['value']|length %}
+            <tr>
+                <td>Coût estimé des études</td>
+                <td>{{row.cout['value']}}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td>Aperçu des enseignements</td>
+                <td>{{row.enseign['value'] }}</td>
+            </tr>
+            <tr>
+                <td>Hébergement</td>
+                <td>{{ row.heberg['value'] }}</td>
+            </tr>
+            {% if row.siteweb|length %}
+            <tr class="bg-secondary">
+                <td>Site web</td>
+                <td><a href="{{ row.siteweb['value'] }}">{{ row.siteweb['value'] }}</a></td>
+            </tr>
+            {% endif %}
+            {% if row.pageweb|length %}
+            <tr class="bg-secondary">
+                <td>Page web</td>
+                <td><a href="{{ row.pageweb['value'] }}">{{ row.pageweb['value'] }}</a></td>
+            </tr>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endfor %}
+{% endblock shortDesc %}
+{% endblock content%}

@@ -1,0 +1,166 @@
+{% extends '/query/models/base_mod.html' %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/sidebars.js')}}"></script>
+<script src="{{ url_for('static', filename='js/jquery-3.7.0.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
+{% endblock %}
+
+{% block navconnect %}
+<li><a class="nav-link" href="{{ url_for('explore.index') }}">Autre recherche</a></li>
+{% endblock %}
+
+{% block header %}
+<h1>{% block title %}Exploration des vidéos...{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<main id="col1" class="d-flex flex-nowrap  bg-secondary" style="height: 1000px;">
+    <div class="b-example-divider b-example-vr"></div>
+    <div class="d-flex flex-column flex-shrink-0 p-3  text-bg-primary table-wrapper" style="width: 220px;">
+        <span class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+            <span class=" mx-auto fs-5 px-2 bg-secondary fw-semibold">Origine</span>
+        </span>
+        {% block col1_1list %}
+        <form method="post">
+            <button class="btn btn-secondary w-100 mb-4"
+                    type="submit"
+                    id="allcreators"
+                    name="allcreators"
+                    value="allcreators"
+                    onclick="$('#loadlink').show();">Par établissement
+            </button>
+        </form>
+        <div style="overflow-y:scroll; height:150px;">
+            <ul>
+                <div class="modal-body">
+                    {% for creator in etabs %}
+                    <li><a href="{{ url_for('omvideos.moddescvideos',
+                                            thiscreatid=creator[1],
+                                            thiscreator=creator[0]) }}">{{creator[0]}}</a></li>
+                    {% endfor %}
+                </div>
+            </ul>
+        </div>
+        {% endblock col1_1list %}
+        <hr/>
+        <span class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+            <span class=" mx-auto fs-5 px-4 bg-secondary fw-semibold">Titre</span>
+        </span>
+
+        {% block col1_2list %}
+        <form method="post">
+            <button class="btn btn-secondary w-100 mb-4"
+                    type="submit"
+                    id="alltitles"
+                    name="alltitles"
+                    value="alltitles"
+                    onclick="$('#loadlink').show();">Tous les titres
+            </button>
+            <button class="btn btn-primary w-100 mt-1"
+                    type="submit"
+                    id="contain"
+                    name="contain"
+                    value="contain"
+                    onclick="$('#loadlink').show();">Rechercher mot clé :
+            </button>
+            <div>
+                <input class="form-control mt-1 border-bottom"
+                       type="text"
+                       name="filter"
+                       id="filter"
+                       placeholder="mot-clé">
+            </div>
+
+        </form>
+        <div style="overflow-y:scroll;height:500px;">
+            <div class="modal-body">
+                <ul>
+                    {% for row in titlelist %}
+                    <li><a href="{{ url_for('omvideos.moddescvideos', thisid=row.id['value'],
+                                                                     thistitle=row.title['value']) }}">
+                        {{row.title['value'] }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <hr/>
+        {% endblock col1_2list %}
+    </div>
+
+    <div class="b-example-divider b-example-vr"></div>
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-primary" style="width: 560px;">
+        <div id="loadlink"
+             style="display:none;">
+            <table class="table">
+                <tr>
+                    <td><img src="{{ url_for('static', filename='images/animatedBook.gif') }}"
+                             alt=""/></td>
+                    <td>Traitement de votre demande... La durée de traitement est extrêmement variable d'une requête à
+                        l'autre et peut prendre quelques secondes ou dizaines de secondes pour demandes complexes,
+                        soyez patient...
+                    </td>
+                </tr>
+            </table>
+        </div>
+        {% block col2edit %}
+        <p> Cette page permet d'accéder aux vidéos réalisées par les établissements pour se présenter, présenter
+            une formation ou des modalités d'activités. Il est possible d'accéder de 3 façons différentes :</p>
+        <ul>
+            <li>Via les établissements producteurs</li>
+            <li>Via les titres (liste complète ou recherche textuelle)</li>
+            <li>Via les sujets abordés</li>
+        </ul>
+        <p>Les vidéos de l'ONISEP ne peuvent pas être visualisée directement sur ce site, nous cherchons une stratégie pour remédier à ce désagrément. Dans l'attente d'une solution le lien vers la page du site ONISEP est fournie.</p>
+        {% endblock col2edit %}
+    </div>
+
+    <div class="b-example-divider b-example-vr"></div>
+    <div class="d-flex flex-column flex-shrink-0 p-3  text-bg-primary table-wrapper" style="width:220px;">
+        <span class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+            <span class=" mx-auto fs-5 px-2 bg-secondary fw-semibold">Sujet</span>
+        </span>
+        {% block col3list %}
+        <form method="post">
+            <label for="allsubjects">
+                Plusieurs vidéos peuvent traiter du mêême sujet.
+            </label>
+            <button class="btn btn-secondary w-100 mb-4"
+                    type="submit"
+                    id="allsubjects"
+                    name="allsubjects"
+                    value="allsubjects"
+                    onclick="$('#loadlink').show();">Tous les sujets
+            </button>
+            <button class="btn btn-primary w-100 mt-1"
+                    type="submit"
+                    id="containtopic"
+                    name="containtopic"
+                    value="containtopic"
+                    onclick="$('#loadlink').show();">Rechercher mot clé :
+            </button>
+            <div>
+                <input class="form-control mt-1 border-bottom"
+                       type="text"
+                       name="filtertopic"
+                       id="filtertopic"
+                       placeholder="mot-clé">
+            </div>
+        </form>
+        <div style="overflow-y:scroll;height:680px;">
+            <div class="modal-body">
+                <ul>
+                    {% for row in subjectslist %}
+                    <li><a href="{{ url_for('omvideos.moddescvideos', thissubjid=row.subject['value'],
+                                                                     thissubject=row.label['value']) }}" onclick="$('#loadlink').show();">
+                        {{ row.label['value'] }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <hr/>
+        {% endblock col3list %}
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/extension1.css')}}">
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/sidebars.js')}}"></script>
+<script src="{{ url_for('static', filename='js/jquery-3.7.0.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
+{% endblock %}
+
+{% block navconnect %}
+<li><a class="nav-link"
+	   href="{{ url_for('explore.index') }}">Autre recherche</a></li>
+{% endblock %}
+
+{% block header %}
+<h1>{% block title %}Recherche à partir de vos centres d'intérêt{% endblock %}</h1>
+<p>Cette page propose une liste de "centres d'intérêt" associés à un certain nombre de méters. Ces centres d'intérêt
+	sont regroupés selon des thèmes afin de faciliter la création d'un "profil professionnel" potentiel. Il est
+	souhaitable de limiter le nombre de choix afin de dégager un petit nombre de métiers. </p>
+{% endblock %}
+
+{% block content %}
+<main class="d-flex flex-nowrap" style="height: 750px;">
+	<div class="d-flex flex-column flex-shrink-0 p-2 text-bg-primary table-wrapper mx-auto">
+		{% block loading %}
+		<div id="loadlink" style="display:none;">
+			<table class="table">
+				<tr>
+					<td><img src="{{ url_for('static', filename='images/animatedBook.gif') }}"
+							 alt=""/></td>
+					<td>Traitement de votre demande... La durée de traitement est extrêmement variable d'une requête à
+						l'autre et peut prendre quelques secondes ou dizaines de secondes pour demandes complexes,
+						soyez patient...
+					</td>
+				</tr>
+			</table>
+		</div>
+		{% endblock loading %}
+		{% block menuTarget %}
+		{% endblock menuTarget %}
+		{% block selectTarget %}
+		{% endblock selectTarget %}
+		{% block listTarget %}
+		{% endblock listTarget %}
+		{% block modelContents %}
+		{% block shortDesc %}
+		{% endblock shortDesc %}
+		{% endblock modelContents %}
+	</div>
+</main>
+{% endblock %}

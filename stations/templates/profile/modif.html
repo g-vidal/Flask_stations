@@ -1,0 +1,93 @@
+{% extends 'index.html' %}
+
+{% block header %}
+Mon profil utilisateur :
+{% endblock %}
+
+{% block content %}
+<ul>
+    <li>Pseudo : {{ userdata[0] }} <strong>Cannot be changed</strong></li>
+    <li>Identifiant : {{ userdata[1] }} <strong>Cannot be changed</strong></li>
+    <li>Mail : {{ userdata[2] }} <strong>Cannot be changed</strong></li>
+    <li>Rôles : {{ userdata[3] }} <strong>Cannot be changed</strong></li>
+</ul>
+<h3>Point de départ des mesures de distances</h3>
+Les distances sont mesurées entre le point ci-dessous et le lieu des formations affichées. <strong>(Les valeurs de
+    longitude et latitude peuvent être trouvées sur les sites cartographiques, par exemple <a
+            href="https://www.openstreetmap.org" target="_blank">ici</a>)</strong>
+<form method="post">
+    <table class="table" style="width: 400px;">
+        <thead>
+        <tr>
+            <td>Longitude</td>
+            <td>Latitude</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <div class="form-floating">
+                    <input type="float"
+                           class="form-control"
+                           id="lon"
+                           name="lon"
+                           placeholder="longitude">
+                    <label for="lon">{{ userdata[4] }}</label>
+                </div>
+            </td>
+            <td>
+                <div class="form-floating">
+                    <input type="float"
+                           class="form-control"
+                           id="lat"
+                           name="lat"
+                           placeholder="latitude">
+                    <label for="lat">{{ userdata[5] }}</label>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>Mon projet de formation</h3>
+    <p>{{ userdata[6] }}</p>
+    <div class="form-floating">
+        <input type="string"
+               class="form-control"
+               id="formation"
+               name="formation"
+               maxlength="500"
+               placeholder="projet de formation">
+        <label for="formation">Entrer le texte modifié ici</label>
+    </div>
+    <h3>Mon projet professionnel</h3>
+    <p>{{ userdata[7] }}</p>
+    <div class="form-floating">
+        <input type="string"
+               class="form-control"
+               id="profession"
+               name="profession"
+               maxlength="500"
+               placeholder="projet professionnel">
+        <label for="profession">Entrer le texte modifié ici</label>
+    </div>
+    <h3>Mes centres d'intérêt</h3>
+    <p>{{ userdata[8] }}</p>
+    <h3>Les compétences que je recherche</h3>
+    <p>{{ userdata[9] }}</p>
+     <div class="form-floating">
+        <input type="string"
+               class="form-control"
+               id="competences"
+               name="competences"
+               maxlength="500"
+               placeholder="projet professionnel">
+        <label for="competences">Entrer le texte modifié ici</label>
+    </div>
+   <button class="btn btn-primary w-50 py-2 mt-4"
+            type="submit"
+            value="Modify">Valider les modifications
+    </button>
+
+</form>
+
+{% endblock content %}

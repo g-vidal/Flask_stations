@@ -1,0 +1,63 @@
+{% extends 'query/models/metiers/modmeti.html' %}
+
+{% block selectMet %}
+{% endblock %}
+
+{% block header %}
+Description du métier : {{jobname}}
+{% endblock %}
+
+{% block modelContents %}
+<div style="overflow-y:scroll;">
+	{% block shortDesc %}
+		{% for row in jobdesc %}
+			{% if row.altNames is defined %}
+				<h4>Autres noms du métier</h4>
+				<p>{{row.altNames['value']}}</p>
+	       	{% endif %}
+	       	{% if row.secteurs is defined %}
+	           <h4>Secteur(s) d'activité</h4>
+	           <p>{{row.secteurs['value']}}</p>
+			{% endif %}
+			{% if row.niveauAcces is defined %}
+				<h4>Niveau requis pour accéder à ce métier</h4>
+				<p>{{row.niveauAcces['value']}}</p>
+			{% endif %}
+			{% if row.accroche is defined %}
+				<h4>Accroche de ce métier</h4>
+				<p>{{row.accroche['value'] | safe}}</p>
+			{% endif %}
+			{% if row.shorterDesc is defined %}
+				<h4>Fiche ONISEP de ce métier</h4>
+				<p>{{row.shorterDesc['value'] | safe }}</p>
+			{% endif %}
+			{% if row.shortDesc is defined %}
+				<h4>Description du métier par le dictionnaire des métiers</h4>
+				<p>{{row.shortDesc['value'] | safe}}</p>
+			{% endif %}
+			{% if row.metAss is defined %}
+				<h4>Metiers associés</h4>
+				<p>{{row.metAss['value']}}</p>
+			{% endif %}
+			{% if row.formations | length %}
+				<h4>Formation(s) conduisant au métier</h4>
+				<ul>
+					{% set listallform = row.formations['value'].split('$ ') %}
+					{% set listallnbform = row.formids['value'].split(', ') %}
+					{% for allform in listallform %}
+						{% set dataform = allform.split('->') %}
+					{% set nbform = listallnbform[loop.index -1] | int %}
+					{% if nbform > 0 %}
+						<li><a href="{{ url_for('query.descformmod', formlink=dataform[1]) }}"
+							   onclick="$('#loadlink').show();" target="_blank">{{ dataform[0] }} (code {{ dataform[1] }})</a>
+						 : {{ nbform }} formations disponibles</li>
+					{% else %}
+						<li>{{ dataform[0] }} (code {{dataform[1]}}). Données absentes ou retirées, veuillez consulter le site web de l'ONISEP.</li>
+					{% endif %}
+				{% endfor%}
+				</ul>
+			{% endif %}
+		{% endfor%}
+	{% endblock %}
+</div>
+{% endblock %}
