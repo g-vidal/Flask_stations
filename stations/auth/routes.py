@@ -92,12 +92,15 @@ def register():
             flash(error)
 
         if error is None:
+            user = User.query.filter_by(email=new_user.email).all()
+            firstuser = user[0]
+            nameindb = firstuser.username
             new_user.password = generate_password_hash(request.form['password'])
             try:
                 db.session.add(new_user)
                 db.session.commit()
             except exc.IntegrityError:
-                error = f"L'utilisateur {new_user.username} est déjà inscrit avec l'adresse {new_user.email}."
+                error = f"L'utilisateur {nameindb} est déjà inscrit avec l'adresse {new_user.email}."
                 flash(error)
             else:
                 return redirect(url_for("auth.login"))
