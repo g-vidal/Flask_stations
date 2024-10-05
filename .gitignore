@@ -1,0 +1,7 @@
+.VenvStations/
+config.py~
+instance/stations.db
+oldvarsConfig.sh
+.gitignore~
+.idea/
+	
