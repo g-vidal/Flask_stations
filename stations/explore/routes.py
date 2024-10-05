@@ -2,8 +2,8 @@ from flask import render_template, redirect, url_for, request, flash, session
 from stations.explore import bp
 from stations.auth.routes import login_required, contrib_required
 
-import SPARQLWrapper
-from SPARQLWrapper import SPARQLWrapper, JSON, POST
+#import SPARQLWrapper
+#from SPARQLWrapper import SPARQLWrapper, JSON, POST
 
 # exploration of data presentation page
 @bp.route('/')

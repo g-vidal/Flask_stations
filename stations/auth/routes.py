@@ -46,18 +46,18 @@ def login():
                 login_session['lat'] = 45.76046
             # modify session status
             user.connect = True
-            db.session.commit()
+            # traitement des rôles
             nbroles = len(user.roles)
             if nbroles == 1:
                 login_session['role'] = user.roles[0].name
+                return render_template('/index.html')
             elif 'roles' not in login_session:
-                roles = ()
+                myroles = ()
                 for i in range(nbroles):
-                    roles += (user.roles[i].name,)
-                login_session['roles'] = roles
-                login_session['role'] = user.roles[0].name
-
-                return render_template('auth/login.html', roles=roles)
+                    myroles += (user.roles[i].name,)
+                login_session['roles'] = myroles
+                login_session['role'] = 'user'
+                return render_template('auth/login.html', roles=myroles)
             else:
                 login_session['role'] = request.form['role']
                 return render_template('explore/index.html')
@@ -93,13 +93,13 @@ def register():
 
         if error is None:
             user = User.query.filter_by(email=new_user.email).all()
-            firstuser = user[0]
-            nameindb = firstuser.username
             new_user.password = generate_password_hash(request.form['password'])
             try:
                 db.session.add(new_user)
                 db.session.commit()
             except exc.IntegrityError:
+                firstuser = user[0]
+                nameindb = firstuser.username
                 error = f"L'utilisateur {nameindb} est déjà inscrit avec l'adresse {new_user.email}."
                 flash(error)
             else:
@@ -107,7 +107,6 @@ def register():
 
     return render_template('auth/register.html', error=error)
 
-# default logout
 @bp.route('/logout')
 def logout():
     users = User.query.filter_by(username=login_session['userpseudo']).all()
