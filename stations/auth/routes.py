@@ -9,6 +9,8 @@ from stations.models.databases import User, Role, Data
 from stations.extensions import db
 
 # Standard login page
+
+
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     error = None
@@ -95,7 +97,7 @@ def register():
                 db.session.add(new_user)
                 db.session.commit()
             except exc.IntegrityError:
-                error = f"L'utilisateur {new_user.username} est déjà inscrit."
+                error = f"L'utilisateur {new_user.username} est déjà inscrit avec l'adresse {new_user.email}."
                 flash(error)
             else:
                 return redirect(url_for("auth.login"))
