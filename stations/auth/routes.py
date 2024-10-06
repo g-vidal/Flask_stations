@@ -61,8 +61,6 @@ def login():
             else:
                 login_session['role'] = request.form['role']
                 return render_template('explore/index.html')
-
-            return redirect(url_for('explore.index'))
         else:
             flash(error)
 
