@@ -26,15 +26,15 @@
         <img class="img-fluid d-block mx-auto mb-4 mt-0"
              src="{{ url_for('static', filename='images/bandeauLongRedMine.png') }}"
              alt=" bandeau d'illustration du projet Tremplin des Sciences"/>
-        <h1 class="display-7 fw-bold text-body-emphasis ">Exploration du corpus de ressources de l'ONISEP : métiers,
-            formations, établissements</h1>
+        <h1 class="display-7 fw-bold text-body-emphasis ">Accès aux données des stations météorologiques du réseau
+            Tremplin des Sciences</h1>
     </div>
 </header>
 
 <nav id="workarea" class="navbar navbar-expand-lg bg-body-tertiary rounded my-1">
     <div class="container-fluid">
         <a class="navbar-brand"
-           href="{{ url_for('main.index') }}">ONISEP-mining</a>
+           href="{{ url_for('main.index') }}">Stations Météo Tremplin</a>
 
         <div class="collapse navbar-collapse"  id="navbar_gen">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -53,10 +53,10 @@
                     </ul>
                 </li>
                     {% block navconnect %}
-                    {% endblock %}
+                    {% endblock navconnect%}
                 {% else %}
                     {% block nav %}
-                    {% endblock %}
+                    {% endblock nav%}
                 {% endif %}
             </ul>
         </div>
