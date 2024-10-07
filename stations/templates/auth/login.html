@@ -19,8 +19,10 @@
 <main class="form-signin w-120 mx-auto mt-0 bg-body-tertiary">
      <form  method="post">
         <img class="mb-4" src="{{ url_for('static', filename='images/tremplinColSmall.png') }}" alt="" width="72" height="57">
+         {% if session['role'] %}
         <h1 class="h3 mb-3 fw-normal">Accès au site !</h1>
-         {% if session['roles'] %}
+         {% elif session['roles'] %}
+         <h1 class="h3 mb-3 fw-normal">Choix du rôle !</h1>
          <div class="my-4">
              <p>Veuillez choisir un rôle. Pour naviguer en tant qu'utilisateur ordinaire cliquez sur user puis sur
                  "Stations météo Tremplin" dans la barre de navigation.</p>

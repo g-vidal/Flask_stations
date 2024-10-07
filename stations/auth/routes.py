@@ -27,8 +27,7 @@ def login():
             error = "Votre compte n'est pas encore validé"
         elif not check_password_hash(user[0].password, passwd):
             error = 'Mot de pase incorrect'
-
-        if len(user) > 1:
+        elif len(user) > 1:
             error = "Erreur dans la base : il y plus d'un seul utilisateur avec la même adresse."
 
         if error is None:
@@ -51,20 +50,19 @@ def login():
             if nbroles == 1:
                 login_session['role'] = user.roles[0].name
                 return render_template('/index.html')
+#                return render_template('/index.html')
             elif 'roles' not in login_session:
                 myroles = ()
                 for i in range(nbroles):
                     myroles += (user.roles[i].name,)
                 login_session['roles'] = myroles
-                login_session['role'] = 'user'
                 return render_template('auth/login.html', roles=myroles)
             else:
-                login_session['role'] = request.form['role']
                 return render_template('explore/index.html')
         else:
             flash(error)
 
-    return render_template('auth/login.html')
+    return render_template('auth/index.html')
 
 # registration page with inputs in database
 @bp.route('/register', methods=('GET', 'POST'))
