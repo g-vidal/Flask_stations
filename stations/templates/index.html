@@ -25,62 +25,23 @@ Présentation du site
 
 {% block content %}
 <div class="content">
-    <h2>Fonctionnement de l'espace ONISEP-mining</h2>
-    <p>Cet espace permet d'interroger les ressources opendata mises à disposition par l'ONISEP sur le site
-        data.gouv. Pour l'utiliser il est nécessaire de s'authentifier, pour cela il faut être inscrit et validé pour
-        avoir les droits d'accès. La validation est effectué manuellement par mail pendant la phase de test qui est en cours.</p>
-    <p>Pour démarrer la recherche, une fois authentifié, cliquez soit sur "Exploration" soit sur l'un des menus
-        déroulants qui apparaitront dans le bandeau ci-dessus (sous le titre du site).
-    </p>
-    <h3>Trois modes d'accès aux données sont possibles</h3>
-    <ul>
-        <li>Recherche guidée à partir de modèles d'exploration préexistants</li>
-        <ul>
-            <li>Métiers</li>
-            <li>Secteurs d'activité</li>
-            <li>Centres d'intérêt</li>
-        </ul>
-        <li>Recherche directe sur les données
-            <ul>
-                <li>Formations</li>
-                <li>Vidéos</li>
-       </ul>
-        </li>
-        <li>Informations utiles sur les ressources
-            <ul>
-                <li>Métiers</li>
-                <li>Formations</li>
-                <li>Centres d'intérêt</li>
-            </ul>
-        </li>
-    </ul>
-
+    <h2>Fonctionnement de l'espace d'exposition des données du réseau Météo Tremplin des Sciences de l'académie de
+        Lyon</h2>
+    <p>Cet espace permet d'interroger les ressources météorologiques opendata mises à disposition par l'ENS de Lyon
+        dans le cadre du projet Tremplin des Sciences. La consultation et l'utilisation des données est libre sous
+        licence créative commons CC-BY. Chaque établissement d'enseignement ou bénévole contribuant au
+        projet a la maîtrise des données qu'il partage et bénéficie d'un accès privilégié au site
     <h3>Règles d'accès</h3>
-    <p>Pour accéder à la ressource il est nécessaire de s'authentifier avec une adresse mail valide, le pseudo fourni
-        n'est utile que pour des fonctionnalités internes.</p>
+    <p>Cliquer sur le bouton <b>Exploration</b> de la barre de commandes du site ci-dessus.</p>
+    <p>Pour accéder à la ressource il n'est pas nécessaire de s'authentifier il est toutefois souhaitable que les
+        enseignants souhaitant utiliser les données soient authentifiés sur le site afin de disposer des extensions
+        pédagogiques mises à disposition pour le système éducatif.</p>
 
     <h2>Origine des données mises à disposition</h2>
-    <p> L'ensemble des données concernant les métiers, les formations et les établissements a été
-        fusionné sous la forme d'un système de données liées (LOD) en RDF et inséré dans une base de données locale. Le
-        site permet d'effectuer des requêtes via une interface simplifiée qui collecte les paramètres nécessaires
-        à la construction de requêtes en langage SPARQL. Les données sont compilées à partir du site ["opendata
-        de l'ONISEP"](http://opendata.onisep.fr) et contiennent les objets suivants
-        :
-    <ul>
-        <li>
-            <a href="http://opendata.onisep.fr/data/605340ddc19a9/2-ideo-actions-de-formation-initiale-univers-lycee.htm" target="_blank">formation
-                initiale lycée</a></li>
-        <li>
-            <a href="http://opendata.onisep.fr/data/605344579a7d7/2-ideo-actions-de-formation-initiale-univers-enseignement-superieur.htm" target="_blank">formation
-                initiale sup</a></li>
-        <li><a href="http://opendata.onisep.fr/data/5fa5816ac6a6e/2-ideo-structures-d-enseignement-secondaire.htm" target="_blank">structures
-            d'enseignement secondaire</a></li>
-        <li><a href="http://opendata.onisep.fr/data/5fa586da5c4b6/2-ideo-structures-d-enseignement-superieur.htm" target="_blank">structures
-            d'enseignement supérieur</a></li>
-        <li><a href="">fiches de formations</a></li>
-        <li><a href="http://opendata.onisep.fr/data/5fe07a9ecc960/2-ideo-fiches-formations.htm" target="_blank">fiches métier</a></li>
-
-    </ul>
+    <p> L'ensemble des données est issu de stations météorologiques financées par le projet PIA1 Tremplin des
+        SCiences ou Lyon Métropole. L'installation a été effectuée par l'équipe Tremplin des Sciences de l'IFÉ de
+        l'ENS de Lyon. Le maintien en conditions opérationnelles est réalisé par Charles-Henri Eyraud, Éric leJan
+        et Gérard Vidal.</p>
 </div>
 
 {% endblock %}
